@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  display: flex;
+  height: 8vh;
+  background-color: lightseagreen;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.form {
+  display: flex;
+  gap: 2em;
+}
