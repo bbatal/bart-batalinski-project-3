@@ -1,14 +1,18 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { TailSpin } from 'react-loader-spinner';
+
 
 function App() {
   const [books, setBooks] = useState([]);
   const [userSubject, setUserSubject] = useState('');
   const [publicationDate, setPublicationDate] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
+  const [isHidden, setIsHidden] = useState(true);
 
 
+  // console.log("these are the books: ", books);
   // make an API call to the Open Library.org API
   useEffect(() => {
     if(searchTerm.length > 0) {
@@ -23,8 +27,17 @@ function App() {
   
       })
       .then((response) => {
-        console.log(response.data.works[0])
-        setBooks(response.data.works);
+        const arr = [];
+        response.data.works.forEach((itemInArr) => {
+          const obj = {
+            img: itemInArr["cover_id"],
+            title: itemInArr.title
+          }
+
+          arr.push(obj);
+        })
+        setIsHidden(true)
+        setBooks(arr);
       })
     }
   }, [searchTerm])
@@ -33,6 +46,8 @@ function App() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    setBooks([])
+    setIsHidden(false);
     setSearchTerm(publicationDate);
   }
 
@@ -86,18 +101,21 @@ function App() {
         </form>
       </header>
 
-        {
-          books.map((bookInfo) => {
-            // const imgString = `https://covers.openlibrary.org/b/id/${bookInfo["cover_id"]}-L.jpg`;
-            return (
-              <div key={bookInfo.id}>
-                {/* <img src={imgString} /> */}
-                <h2>{bookInfo.title}</h2>
+      {!isHidden && <TailSpin 
+       height={100}
+       width={100} 
+       color='red' 
+       ariaLabel='loading' 
+       />}
 
-              </div>
-            )
-          })
-        }
+       { books.map((item, index) => {
+           return (
+             <div className='input-container' key={index}>
+               <h2>hello friends</h2>
+             </div>
+           )
+         })
+       }
 
     </div>
   );
