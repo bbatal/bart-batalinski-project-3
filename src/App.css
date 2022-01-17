@@ -1,49 +1,10 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
+/* header styles begin */
 .header {
   display: flex;
   height: 8vh;
   background-color: lightseagreen;
   align-items: center;
   justify-content: center;
-  width: 80%;
   margin: 0 auto;
 }
 
@@ -57,3 +18,68 @@
   display: flex;
   gap: 2em;
 }
+
+/* main styles begin */
+main {
+  padding: 1em 0 3em 0;
+}
+/* .book-container section begins */
+.book-collection {
+  height: 90vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.book-list {
+  /* flex properties */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  align-self: flex-start;
+}
+
+.flex-list-item {
+    width: calc((100% / 4) - 2em);
+    margin: 1em;
+    position: relative;
+    
+    /* display properties */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    /* fading animation */
+    animation-name: FadeIn;
+    animation-duration: 1.5s;
+    transition-timing-function: linear;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* removes book from list */
+.remove-button {
+  background-color: red;
+  border: none;
+  border-radius: 50%;
+  padding: 0.3em 0.5em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
