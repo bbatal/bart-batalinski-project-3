@@ -58,7 +58,6 @@ main {
     animation-name: FadeIn;
     animation-duration: 1.5s;
     transition-timing-function: linear;
-    animation-delay: 1s;
 }
 
 @keyframes FadeIn {
