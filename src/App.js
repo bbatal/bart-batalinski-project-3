@@ -3,12 +3,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import Book from './components/Book';
+import Form from './components/Form';
 
 
 function App() {
   const [books, setBooks] = useState([]);
-  const [userSubject, setUserSubject] = useState('fiction');
-  const [mediumType, setMediumType] = useState('book')
   const [searchTerm, setSearchTerm] = useState('');
   const [isHidden, setIsHidden] = useState(true);
 
@@ -54,7 +53,7 @@ function App() {
   }, [])
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event, userSubject, mediumType) => {
     event.preventDefault();
 
     setBooks([]);
@@ -67,9 +66,9 @@ function App() {
 
   }
 
-  const handleSubject = (event) => {
-    setUserSubject(event.target.value);
-  }
+  // const handleSubject = (event) => {
+  //   setUserSubject(event.target.value);
+  // }
 
   const handleRemoveBook = (e) => {
       const copyArr = books.filter((singleBook) => {
@@ -82,37 +81,9 @@ function App() {
   return (
     <div className="App">
       <header className="header">
-        <form className='form' onSubmit={ handleSubmit }>
-          <div className='input-container'>
-            <label htmlFor='subject'>Pick From a subject below</label>
-            <select id="subject" name="Subject" onChange={ (handleSubject) } value={userSubject}>
-              <option value="#">subjects</option>
-              <option value="beauty">Beauty</option>
-              <option value="animals">Animals</option>
-              <option value="fiction">Fiction</option>
-              <option value="science">Science</option>
-              <option value="business">Business</option>
-              <option value="children">Children's</option>
-              <option value="history">History</option>
-              <option value="health">Health</option>
-              <option value="biography">Biography</option>
-              <option value="textbooks">Textbooks</option>
-            </select>
-          </div>
-
-          <div className='input-container'>
-            <label htmlFor='subject'>Pick Medium Type</label>
-            <select id="subject" name="Subject" onChange={ (e) => {setMediumType(e.target.value)} } value={mediumType}>
-              <option value="#">medium</option>
-              <option value="all">Any</option>
-              <option value="books">Book</option>
-              <option value="magazines">Magazine</option>
-              
-            </select>
-          </div>
-
-          <button className='search-button'>Search</button>
-        </form>
+        <Form
+        handleSubmitFunction={handleSubmit}
+        />
       </header>
       <main>
         <div className='wrapper'>
@@ -125,8 +96,7 @@ function App() {
               className="loading-icon" 
               />}
 
-              {
-                <ul className='book-list'>              
+              <ul className='book-list'>              
                 {books.map((bookObj) => {
                     return (
                       <li className='flex-list-item'>
@@ -139,7 +109,6 @@ function App() {
                     )
                   })}
                 </ul>
-                }
           </section>
 
         </div>

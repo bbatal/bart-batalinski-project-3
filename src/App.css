@@ -8,16 +8,6 @@
   margin: 0 auto;
 }
 
-.input-container {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-}
-
-.form {
-  display: flex;
-  gap: 2em;
-}
 
 /* main styles begin */
 main {
