@@ -5,6 +5,8 @@ import { TailSpin } from 'react-loader-spinner';
 import Book from './components/Book';
 import Form from './components/Form';
 import Modal from './components/Modal';
+import firebaseProject from './firebaseSetup';
+import { getDatabase, ref, onValue, push, remove } from 'firebase/database';
 
 
 function App() {
@@ -19,6 +21,9 @@ function App() {
 
   // information sharing between components
   const [sharedState, setSharedState] = useState({});
+
+  // firebase favourites array/state
+  const [fireStorage, setFireStorage] = useState([]);
 
 
   
@@ -78,12 +83,15 @@ function App() {
   //   setUserSubject(event.target.value);
   // }
 
-  const handleRemoveBook = (e) => {
-      const copyArr = books.filter((singleBook) => {
-        return singleBook.id !== e.target.value;
-      })
+  const handleAddBook = (e) => {
+      // const copyArr = books.filter((singleBook) => {
+      //   return singleBook.id !== e.target.value;
+      // })
 
-      setBooks(copyArr);
+      // setBooks(copyArr);
+
+      // TODO: onclick add this book to firebase
+      // check if firebase already has this book in which case dont add it
   }
 
   const changeView = (bookObject) => {
@@ -119,7 +127,7 @@ function App() {
                 {books.map((bookObj) => {
                     return (
                       <li className="flex-list-item">
-                        <button className='remove-button' onClick={handleRemoveBook} value={bookObj.id}>X</button>
+                        <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>X</button>
 
                         <button className='article-modal' onClick={() => {changeView(bookObj)}}>
                           <Book

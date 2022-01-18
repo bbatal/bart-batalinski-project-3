@@ -61,7 +61,7 @@ main {
 }
 
 /* removes book from list */
-.remove-button {
+.fav-button {
   background-color: red;
   border: none;
   border-radius: 50%;
