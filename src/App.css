@@ -68,3 +68,13 @@ main {
   opacity: 1;
 }
 
+/* article button styling */
+.article-modal {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+

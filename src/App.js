@@ -1,9 +1,10 @@
 import './App.css';
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import Book from './components/Book';
 import Form from './components/Form';
+import Modal from './components/Modal';
 
 
 function App() {
@@ -14,6 +15,10 @@ function App() {
   // controls book pagination on clicking search button again
   const [offset, setOffset] = useState(0);
   const [counter, setCounter] = useState(10);
+  const [view, setView] = useState(false);
+
+  // information sharing between components
+  const [sharedState, setSharedState] = useState({});
 
 
   
@@ -59,6 +64,7 @@ function App() {
 
       setBooks([]);
       setIsHidden(false);
+      setView(false);
 
     // if user clicks again on search, fresh books will be gotten with the offset param in order to repopulate the page
       setOffset(counter);
@@ -80,6 +86,14 @@ function App() {
       setBooks(copyArr);
   }
 
+  const changeView = () => {
+    setView(true);
+  }
+
+  const handleViewToggle = (bookObj) => {
+    setSharedState(bookObj)
+  }
+
   return (
     <div className="App">
       <header className="header">
@@ -99,13 +113,14 @@ function App() {
               className="loading-icon" 
               />}
 
+                { !view &&
               <ul className='book-list'>              
                 {books.map((bookObj) => {
                     return (
                       <li className={`flex-list-item fadeIn ${books && 'visible'}`}>
                         <button className='remove-button' onClick={handleRemoveBook} value={bookObj.id}>X</button>
 
-                        <button>
+                        <button className='article-modal' onClick={changeView}>
                           <Book
                           // error handling for if bookObj.volumeInfo.imageLinks is not valid
                           img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
@@ -118,6 +133,18 @@ function App() {
                     )
                   })}
                 </ul>
+                }
+
+                {view &&
+                <Modal
+                bookObj={sharedState}
+                 />
+                // TODO: add component here that will take in some object from click event
+                // render all the information on the page
+                // have a remove button that will change the view state and bring back books
+
+                }
+
           </section>
 
         </div>
