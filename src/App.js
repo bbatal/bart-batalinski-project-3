@@ -86,12 +86,13 @@ function App() {
       setBooks(copyArr);
   }
 
-  const changeView = () => {
+  const changeView = (bookObject) => {
+    setSharedState(bookObject);
     setView(true);
   }
 
-  const handleViewToggle = (bookObj) => {
-    setSharedState(bookObj)
+  const turnOffModal = () => {
+    setView(false);
   }
 
   return (
@@ -120,7 +121,7 @@ function App() {
                       <li className={`flex-list-item fadeIn ${books && 'visible'}`}>
                         <button className='remove-button' onClick={handleRemoveBook} value={bookObj.id}>X</button>
 
-                        <button className='article-modal' onClick={changeView}>
+                        <button className='article-modal' onClick={() => {changeView(bookObj)}}>
                           <Book
                           // error handling for if bookObj.volumeInfo.imageLinks is not valid
                           img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
@@ -136,12 +137,27 @@ function App() {
                 }
 
                 {view &&
-                <Modal
-                bookObj={sharedState}
-                 />
                 // TODO: add component here that will take in some object from click event
-                // render all the information on the page
-                // have a remove button that will change the view state and bring back books
+                <Modal
+                title={sharedState.volumeInfo.title}
+                imgSrc={sharedState.volumeInfo.imageLinks 
+                  ? sharedState.volumeInfo.imageLinks.thumbnail 
+                  : null}
+                imgAlt={sharedState.volumeInfo.subTitle 
+                  ? sharedState.volumeInfo.subTitle 
+                  : sharedState.volumeInfo.title}
+                description={sharedState.volumeInfo.description
+                ? sharedState.volumeInfo.description
+                : sharedState.searchInfo.textSnippet}
+                authors={sharedState.volumeInfo.authors
+                ? sharedState.volumeInfo.authors
+                : null}
+                linkToBook={sharedState.volumeInfo.infoLink}
+                pageCount={sharedState.volumeInfo.pageCount}
+                rating={sharedState.volumeInfo.averageRating}
+                printType={sharedState.volumeInfo.printType}
+                closeModal={turnOffModal}
+                 />
 
                 }
 
