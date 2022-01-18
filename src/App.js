@@ -118,7 +118,7 @@ function App() {
               <ul className='book-list'>              
                 {books.map((bookObj) => {
                     return (
-                      <li className={`flex-list-item fadeIn ${books && 'visible'}`}>
+                      <li className="flex-list-item">
                         <button className='remove-button' onClick={handleRemoveBook} value={bookObj.id}>X</button>
 
                         <button className='article-modal' onClick={() => {changeView(bookObj)}}>

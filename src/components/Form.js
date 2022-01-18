@@ -14,7 +14,6 @@ const Form = (props) => {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // TODO: make this function do something
         handleSubmitFunction(event, userSubject, mediumType);
     }
 

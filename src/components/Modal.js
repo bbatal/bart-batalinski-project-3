@@ -24,7 +24,7 @@ const {title, imgSrc, imgAlt, description, authors, linkToBook, pageCount, ratin
             })}
                 <li><p>Page Count: {pageCount}</p></li>
                 <li><p>Rating: {rating}</p></li>
-                <li><a href={linkToBook} target="_blank">Buy this {printType === 'MAGAZINE' ? 'Magazine' : 'Book'}</a></li>
+                <li><a href={linkToBook} target="_blank" rel="noreferrer">Buy this {printType === 'MAGAZINE' ? 'Magazine' : 'Book'}</a></li>
             </ul>
 
             <p>{description}</p>
