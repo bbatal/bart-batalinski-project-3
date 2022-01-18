@@ -4,6 +4,7 @@ import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import Book from './components/Book';
 import Form from './components/Form';
+import Modal from './components/Modal';
 
 
 function App() {
@@ -14,6 +15,11 @@ function App() {
   // controls book pagination on clicking search button again
   const [offset, setOffset] = useState(0);
   const [counter, setCounter] = useState(10);
+  const [view, setView] = useState(false);
+
+  // information sharing between components
+  const [sharedState, setSharedState] = useState({});
+
 
   
   // make an API call to the Open Library.org API
@@ -42,9 +48,9 @@ function App() {
   }, [searchTerm])
 
   // reset the counter when subject is changed
-  // useEffect(() => {
-  //   setCounter(10);
-  // }, [userSubject])
+  const changeCounter = () => {
+    setCounter(10);
+  }
 
   // initializing random page to some data
   const random = Math.floor(Math.random() * 200);
@@ -56,13 +62,15 @@ function App() {
   const handleSubmit = (event, userSubject, mediumType) => {
     event.preventDefault();
 
-    setBooks([]);
-    setIsHidden(false);
+      setBooks([]);
+      setIsHidden(false);
+      setView(false);
 
     // if user clicks again on search, fresh books will be gotten with the offset param in order to repopulate the page
       setOffset(counter);
       setSearchTerm([userSubject, offset, mediumType]);
-      setCounter(counter + 10);
+      setCounter(counter + 15);
+      console.log(counter);
 
   }
 
@@ -78,11 +86,21 @@ function App() {
       setBooks(copyArr);
   }
 
+  const changeView = (bookObject) => {
+    setSharedState(bookObject);
+    setView(true);
+  }
+
+  const turnOffModal = () => {
+    setView(false);
+  }
+
   return (
     <div className="App">
       <header className="header">
         <Form
         handleSubmitFunction={handleSubmit}
+        handleCounter={changeCounter}
         />
       </header>
       <main>
@@ -96,19 +114,53 @@ function App() {
               className="loading-icon" 
               />}
 
+                { !view &&
               <ul className='book-list'>              
                 {books.map((bookObj) => {
                     return (
-                      <li className='flex-list-item'>
+                      <li className={`flex-list-item fadeIn ${books && 'visible'}`}>
                         <button className='remove-button' onClick={handleRemoveBook} value={bookObj.id}>X</button>
-                        <Book
-                        img={bookObj.volumeInfo.imageLinks.thumbnail}
-                        title={bookObj.volumeInfo.title} 
-                          />
+
+                        <button className='article-modal' onClick={() => {changeView(bookObj)}}>
+                          <Book
+                          // error handling for if bookObj.volumeInfo.imageLinks is not valid
+                          img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
+                          title={bookObj.volumeInfo.title}
+                          key={bookObj.id} 
+                            />
+
+                        </button>
                       </li>
                     )
                   })}
                 </ul>
+                }
+
+                {view &&
+                // TODO: add component here that will take in some object from click event
+                <Modal
+                title={sharedState.volumeInfo.title}
+                imgSrc={sharedState.volumeInfo.imageLinks 
+                  ? sharedState.volumeInfo.imageLinks.thumbnail 
+                  : null}
+                imgAlt={sharedState.volumeInfo.subTitle 
+                  ? sharedState.volumeInfo.subTitle 
+                  : sharedState.volumeInfo.title}
+                description={sharedState.volumeInfo.description
+                ? sharedState.volumeInfo.description
+                : sharedState.searchInfo.textSnippet}
+                authors={sharedState.volumeInfo.authors
+                ? sharedState.volumeInfo.authors
+                : null}
+                linkToBook={sharedState.volumeInfo.infoLink}
+                pageCount={sharedState.volumeInfo.pageCount}
+                rating={sharedState.volumeInfo.averageRating}
+                printType={sharedState.volumeInfo.printType}
+                closeModal={turnOffModal}
+                 />
+
+                }
+
           </section>
 
         </div>

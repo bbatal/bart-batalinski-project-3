@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Form.css'
 
 const Form = (props) => {
-    const {handleSubmitFunction} = props
+    const {handleSubmitFunction, handleCounter} = props;
     const [userSubject, setUserSubject] = useState('fiction');
     const [mediumType, setMediumType] = useState('book');
+
+    useEffect(() => {
+        handleCounter();
+    }, [userSubject])
 
     // handles our form submission
     const handleSubmit = (event) => {

@@ -43,21 +43,6 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    /* fading animation */
-    animation-name: FadeIn;
-    animation-duration: 1.5s;
-    transition-timing-function: linear;
-}
-
-@keyframes FadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
 }
 
 /* removes book from list */
@@ -71,5 +56,25 @@ main {
   right: 0;
   cursor: pointer;
   z-index: 10;
+}
+
+.fadeIn {
+  /* fading animation */
+    opacity: 0;
+}
+
+.fadeIn.visible {
+  transition: opacity 1s ease-in;
+  opacity: 1;
+}
+
+/* article button styling */
+.article-modal {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
