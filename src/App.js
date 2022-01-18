@@ -45,7 +45,7 @@ function App() {
   
       })
       .then((response) => {
-        console.log(response.data.items)
+        console.log(searchTerm)
         setIsHidden(true)
         setBooks(response.data.items)
       })
@@ -92,6 +92,26 @@ function App() {
 
       // TODO: onclick add this book to firebase
       // check if firebase already has this book in which case dont add it
+      const clickedBookId = e.target.value;
+      const bookObj = {};
+
+      books.forEach((book) => {
+        if(book.id === clickedBookId) {
+          const imgSrc = book.volumeInfo.imageLinks.smallThumbnail;
+          const imgAlt = book.volumeInfo.title;
+          const bookId = book.id;
+          const title = book.volumeInfo.title;
+          
+          bookObj.id = bookId;
+          bookObj.src = imgSrc;
+          bookObj.alt = imgAlt;
+          bookObj.title = title;
+
+          return;
+        }
+      })
+
+      console.log(bookObj)
   }
 
   const changeView = (bookObject) => {
