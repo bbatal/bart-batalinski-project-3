@@ -21,7 +21,7 @@ function App() {
   const [sharedState, setSharedState] = useState({});
 
 
-  
+
   // make an API call to the Open Library.org API
   useEffect(() => {
     if(searchTerm.length > 0) {
@@ -35,12 +35,12 @@ function App() {
           printType: searchTerm[2],
           maxResults: 15,
           startIndex: searchTerm[1],
-
+          fields: "items(id, volumeInfo(authors, averageRating, title, subtitle, description, imageLinks, infoLink, ))"
         }
   
       })
       .then((response) => {
-        console.log(response.data.items)
+        console.log(response)
         setIsHidden(true)
         setBooks(response.data.items)
       })
@@ -53,9 +53,8 @@ function App() {
   }
 
   // initializing random page to some data
-  const random = Math.floor(Math.random() * 200);
   useEffect(() => {
-    setSearchTerm(["fiction", random]);
+    setSearchTerm(["fiction", Math.floor(Math.random() * 200)]);
   }, [])
 
 
@@ -148,7 +147,7 @@ function App() {
                   : sharedState.volumeInfo.title}
                 description={sharedState.volumeInfo.description
                 ? sharedState.volumeInfo.description
-                : sharedState.searchInfo.textSnippet}
+                : null}
                 authors={sharedState.volumeInfo.authors
                 ? sharedState.volumeInfo.authors
                 : null}
