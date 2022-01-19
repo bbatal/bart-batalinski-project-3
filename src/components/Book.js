@@ -12,13 +12,8 @@ function Book(props) {
 
                 <div className='text-container'>
                     <h2>{props.title}</h2>
-
+                    <p>{props.rating}</p>
                 </div>
-            </div>
-            <div className='back-side'>
-                <p>
-                    { }
-                </p>
             </div>
         </article>
     )

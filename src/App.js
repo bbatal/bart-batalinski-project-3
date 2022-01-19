@@ -234,6 +234,7 @@ function App() {
                 <>
                 <FilterBooks
                 bookArr={books}
+                filteredBooks={filteredBooks}
                 />
               <ul className='book-list'>              
                 {books.map((bookObj) => {
@@ -246,6 +247,9 @@ function App() {
                           // error handling for if bookObj.volumeInfo.imageLinks is not valid
                           img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
                           title={bookObj.volumeInfo.title}
+                          rating={bookObj.volumeInfo.averageRating
+                          ? bookObj.volumeInfo.averageRating
+                          : 1 }
                           key={bookObj.id} 
                             />
 
