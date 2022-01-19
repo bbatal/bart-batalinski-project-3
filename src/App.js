@@ -30,7 +30,8 @@ function App() {
   const [fireStorage, setFireStorage] = useState([]);
 
 
-  // make an API call to the Open Library.org API
+  
+  // make an API call to the Google Books API
   useEffect(() => {
     if(searchTerm.length > 0) {
       axios({
@@ -43,12 +44,11 @@ function App() {
           printType: searchTerm[2],
           maxResults: 15,
           startIndex: searchTerm[1],
-
+          fields: "items(id, volumeInfo(authors, averageRating, title, subtitle, description, imageLinks, infoLink, ))"
         }
   
       })
       .then((response) => {
-        // console.log(searchTerm)
         setIsHidden(true)
         setBooks(response.data.items)
       })
@@ -61,9 +61,8 @@ function App() {
   }
 
   // initializing random page to some data
-  const random = Math.floor(Math.random() * 200);
   useEffect(() => {
-    setSearchTerm(["fiction", random]);
+    setSearchTerm(["fiction", Math.floor(Math.random() * 200)]);
   }, [])
 
 
