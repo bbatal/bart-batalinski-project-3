@@ -171,6 +171,9 @@ function App() {
 
   const changeView = (bookObject) => {
     setSharedState(bookObject);
+
+    // closes cart component if it is open
+    toggleCart();
     setView(true);
   }
 
