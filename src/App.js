@@ -10,6 +10,7 @@ import Modal from './components/Modal';
 import BookCart from './components/BookCart';
 import firebaseProject from './firebaseSetup';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
+import FilterBooks from './components/FilterBooks';
 
 
 function App() {
@@ -173,16 +174,23 @@ function App() {
     setSharedState(bookObject);
 
     // closes cart component if it is open
-    toggleCart();
+    setCartView(false);
     setView(true);
   }
 
+  // closes modal/ reopens list of books
   const turnOffModal = () => {
     setView(false);
   }
 
+  // toggles if side-menu is open or not
   const toggleCart = () => {
     setCartView(!cartView);
+  }
+
+  // updates books state by parameter
+  const filteredBooks = (newBookArray) => {
+    setBooks(newBookArray);
   }
 
   return (
@@ -223,6 +231,10 @@ function App() {
               />}
 
                 { !view &&
+                <>
+                <FilterBooks
+                bookArr={books}
+                />
               <ul className='book-list'>              
                 {books.map((bookObj) => {
                     return (
@@ -242,6 +254,7 @@ function App() {
                     )
                   })}
                 </ul>
+                </>
                 }
 
                 {view &&
