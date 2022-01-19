@@ -15,7 +15,7 @@ import { getDatabase, ref, onValue, push } from 'firebase/database';
 function App() {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
 
   // controls book pagination on clicking search button again
   const [offset, setOffset] = useState(0);
@@ -30,7 +30,7 @@ function App() {
   const [fireStorage, setFireStorage] = useState([]);
 
 
-  
+
   // make an API call to the Google Books API
   useEffect(() => {
     if(searchTerm.length > 0) {
