@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import './Form.css'
 
-const Form = (props) => {
-    const {handleSubmitFunction, handleCounter} = props;
+const Form = ({handleSubmitFunction, handleCounter}) => {
     const [userSubject, setUserSubject] = useState('fiction');
     const [mediumType, setMediumType] = useState('book');
 
     useEffect(() => {
         handleCounter();
+                
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userSubject])
 
     // handles our form submission
