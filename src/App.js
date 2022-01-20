@@ -266,7 +266,6 @@ function App() {
                 }
 
                 {view &&
-                // TODO: add component here that will take in some object from click event
                 <Modal
                 title={sharedState.volumeInfo.title}
                 imgSrc={sharedState.volumeInfo.imageLinks 
