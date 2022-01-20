@@ -102,7 +102,9 @@ main {
 .card {
   border-radius: 10px;
   background: rgb(245, 245, 245);
-  max-width: 600px;
+  max-width: 700px;
+  height: 500px;
+  
 
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   position: relative;
@@ -129,18 +131,57 @@ main {
 
 .modal-left-section {
   padding: 1em;
-  min-width: 50%;
+  min-width: 45%;
 
   display: flex;
   flex-direction: column;
   gap: 1em;
 }
 
-.modal-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  padding: 1em;
+.modal-img-container {
+  flex-grow: 1;
 }
 
+.modal-img {
+  margin: 0 auto;
+}
+
+.modal-right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em 1.5em 1.5em 1em;
+  
+}
+
+.modal-title {
+  font-size: 2rem;
+}
+
+.modal-link-button {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+  align-self: center;
+  padding: 0.5em 1em;
+  background-color: rgb(245, 245, 245);
+
+  transition: all 0.1s ease-in;
+}
+
+.modal-link-button:hover,
+.modal-link-button:focus {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.modal-author-rating {
+  text-align: center;
+  margin-bottom: 2em;
+}
+ .modal-author-rating li {
+   margin-bottom: 1em;
+ }
 

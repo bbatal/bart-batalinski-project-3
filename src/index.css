@@ -9,6 +9,9 @@ html { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: 
 
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; border: 0; padding: 0; white-space: nowrap; clip-path: inset(100%); clip: rect(0 0 0 0); overflow: hidden;}
 
+
+/* google fonts import */
+@import url('https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Lilita+One&display=swap');
 /* general styles begin */
 html {
     font-size: 125%;
@@ -19,11 +22,18 @@ body {
     background: #e2e1e0;
 }
 
+p {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arvo', serif;
+}
+
 h1,
 h2,
 h3 {
     margin: 0;
     padding: 0;
+    font-family: 'Lilita One', cursive;
 }
 
 /* responsive image */
