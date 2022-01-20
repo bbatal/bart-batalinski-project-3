@@ -1,4 +1,4 @@
-import './App.css';
+import './index.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
@@ -70,7 +70,10 @@ function App() {
 
 
   const handleSubmit = (event, userSubject, mediumType) => {
-    event.preventDefault();
+    if(event !== 'click') {
+      event.preventDefault();
+
+    }
 
       setBooks([]);
       setIsHidden(false);
@@ -237,6 +240,8 @@ function App() {
                 { !view &&
                 <>
                 <FilterBooks
+                term={searchTerm}
+                getMoreBooks={handleSubmit}
                 bookArr={books}
                 filteredBooks={filteredBooks}
                 />
