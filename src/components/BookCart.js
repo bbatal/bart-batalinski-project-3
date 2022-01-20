@@ -19,8 +19,8 @@ export default function BookCart({ title, imgSrc, id }) {
 
     
     return (
-        <article key={id}>
-            <button onClick={() => {handleRemove(id)}}>X</button>
+        <article key={id} className='cart-article'>
+            <button onClick={() => {handleRemove(id)}} className='remove-cart-article'>remove</button>
             <img src={imgSrc} alt={imgSrc} />
             <h2>{title}</h2>
         </article>
