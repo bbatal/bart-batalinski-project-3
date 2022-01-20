@@ -59,7 +59,6 @@ ul {
 /* header styles begin */
 .header {
   display: flex;
-  min-height: 50vh;
   padding: 2.5em 0;
   min-height: 200px;
   background: linear-gradient(to right bottom, rgba(48, 67, 82, 0.6), rgba(215, 210, 204, 0.9)), url(./assets/ehud-neuhaus-hero.jpg);
@@ -138,17 +137,16 @@ ul {
 
 /* main styles begin */
 main {
-  padding: 2em 0 3em 0;
+  padding: 2.5em 0 3em 0;
   position: relative;
 }
 /* .book-container section begins */
 .book-collection {
-  height: 90vh;
-
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  padding: 1em 0em;
 }
 
 
@@ -159,13 +157,12 @@ main {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  align-self: flex-start;
 }
 
 .flex-list-item {
-    width: calc((100% / 4) - 2em);
     margin: 1em;
     position: relative;
+    flex-basis: min-content;
     
     /* display properties */
     display: flex;
@@ -190,16 +187,26 @@ main {
   }
 }
 
-/* removes book from list */
+
 .fav-button {
-  background-color: red;
   border: none;
-  border-radius: 50%;
+  background: transparent;
+  color: red;
+  font-size: 2rem;
   padding: 0.3em 0.5em;
   position: absolute;
-  top: 0;
-  right: 0;
+  top: -10px;
+  right: -10px;
   cursor: pointer;
+  z-index: 10;
+}
+
+.fav-button > * {
+  pointer-events: none;
+}
+
+.heartIcon {
+  position: relative;
   z-index: 5;
 }
 
@@ -211,6 +218,7 @@ main {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 5;
 }
 
 .cartMenu {
@@ -232,13 +240,14 @@ main {
   border-radius: 10px;
   background: rgb(245, 245, 245);
   max-width: 700px;
-  height: 500px;
+  min-height: 500px;
   
 
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   position: relative;
 
   display: flex;
+  flex-direction: column;
 }
 
 .modal-close-button {
@@ -308,7 +317,8 @@ main {
 
 .modal-author-rating {
   text-align: center;
-  margin-bottom: 2em;
+  margin-bottom: 0.2em;
+  font-size: 0.8rem;
 }
  .modal-author-rating li {
    margin-bottom: 1em;
@@ -336,6 +346,7 @@ main {
    z-index: 30;
 
    top: 30px;
+   left: 0;
  }
 
  .next-button {
@@ -357,5 +368,16 @@ main {
 
     .input-container {
       width: calc((100% / 2) - 1em);
+    }
+ }
+
+
+ @media (min-width: 890px) {
+    .card {
+      flex-direction: row;
+    }
+
+    .book-collection {
+      padding: 1em 4em;
     }
  }
