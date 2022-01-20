@@ -121,30 +121,82 @@ ul {
   text-shadow: 10px 10px 11px #fff;
 }
 
-/* .book-store section begins */
+/* Favourites Cart begins */
 .book-store {
   background: transparent;
   border: none;
   font-size: 1.8rem;
 
-  position: absolute;
+  position: fixed;
   right: 20px;
   top: 20px;
   cursor: pointer;
   z-index: 30;
 }
 
+.cartMenu {
+  position: fixed;
+  background: whitesmoke;
+  padding: 3.5em 1em;
+  width: 400px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  height: 100%;
+
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  cursor: pointer;
+  flex-basis: min-content;
+}
+
+.cart-article {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+}
+
+.cart-article h2 {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.remove-cart-article {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1rem;
+  padding: 0.1em 0.3em;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+
+  /* thank you for the linear gradient by Muhammed Erdem */
+  /* codepen: https://codepen.io/JavaScriptJunkie/pen/pPRooV */
+  background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+}
 
 /* main styles begin */
 main {
   padding: 2.5em 0 3em 0;
   position: relative;
 }
+
+
 /* .book-container section begins */
 .book-collection {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 100%;
+  min-height: 50vh;
   position: relative;
   padding: 1em 0em;
 }
@@ -219,20 +271,6 @@ main {
   align-items: center;
   cursor: pointer;
   z-index: 5;
-}
-
-.cartMenu {
-  position: fixed;
-  background: whitesmoke;
-  max-width: 300px;
-  width: 300px;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 20;
-  height: 100%;
-
-  overflow-y: scroll;
 }
 
 /* modal styling begins */
@@ -343,7 +381,7 @@ main {
   .next-section {
    font-size: 0.9rem;
    position: absolute;
-   z-index: 30;
+   z-index: 5;
 
    top: 30px;
    left: 0;

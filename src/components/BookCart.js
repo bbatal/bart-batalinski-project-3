@@ -1,5 +1,6 @@
 import firebaseProject from '../firebaseSetup.js';
 import { getDatabase, ref, remove } from 'firebase/database';
+import CutString from '../utils.js';
 
 export default function BookCart({ title, imgSrc, id }) {
 
@@ -19,10 +20,10 @@ export default function BookCart({ title, imgSrc, id }) {
 
     
     return (
-        <article key={id}>
-            <button onClick={() => {handleRemove(id)}}>X</button>
+        <article key={id} className='cart-article'>
+            <button onClick={() => {handleRemove(id)}} className='remove-cart-article'>remove</button>
             <img src={imgSrc} alt={imgSrc} />
-            <h2>{title}</h2>
+            <h2>{CutString(title, 40)}</h2>
         </article>
         )
 }
