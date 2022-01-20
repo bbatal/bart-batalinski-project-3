@@ -1,9 +1,9 @@
-import './App.css';
+import './index.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookReader } from '@fortawesome/free-solid-svg-icons';
+import { faBookReader, faHeart } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import Book from './components/Book';
@@ -47,7 +47,7 @@ function App() {
           printType: searchTerm[2],
           maxResults: 15,
           startIndex: searchTerm[1],
-          fields: "items(id, volumeInfo(authors, averageRating, title, subtitle, description, imageLinks, infoLink, ))"
+          fields: "items(id, volumeInfo(authors, averageRating, title, subtitle, description, imageLinks, infoLink, printType ))"
         }
   
       })
@@ -70,7 +70,10 @@ function App() {
 
 
   const handleSubmit = (event, userSubject, mediumType) => {
-    event.preventDefault();
+    if(event !== 'click') {
+      event.preventDefault();
+
+    }
 
       setBooks([]);
       setIsHidden(false);
@@ -80,7 +83,6 @@ function App() {
       setOffset(counter);
       setSearchTerm([userSubject, offset, mediumType]);
       setCounter(counter + 15);
-      console.log(counter);
 
   }
 
@@ -92,9 +94,7 @@ function App() {
       // const copyArr = books.filter((singleBook) => {
       //   return singleBook.id !== e.target.value;
       // })
-
       // setBooks(copyArr);
-
       // TODO: onclick add this book to firebase
       // check if firebase already has this book in which case dont add it
       const clickedBookId = e.target.value;
@@ -229,7 +229,7 @@ function App() {
               {!isHidden && <TailSpin 
               height={100}
               width={100} 
-              color='red' 
+              color='black' 
               ariaLabel='loading'
               className="loading-icon" 
               />}
@@ -237,6 +237,8 @@ function App() {
                 { !view &&
                 <>
                 <FilterBooks
+                term={searchTerm}
+                getMoreBooks={handleSubmit}
                 bookArr={books}
                 filteredBooks={filteredBooks}
                 />
@@ -244,7 +246,7 @@ function App() {
                 {books.map((bookObj) => {
                     return (
                       <li className="flex-list-item" key={bookObj.id}>
-                        <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>♥</button>
+                        <button className='fav-button' onClick={handleAddBook} value={bookObj.id}><FontAwesomeIcon icon={ faHeart } /></button>
 
                         <button className='article-modal' onClick={() => {changeView(bookObj)}}>
                           <Book

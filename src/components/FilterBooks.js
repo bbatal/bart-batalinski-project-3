@@ -1,4 +1,8 @@
-export default function FilterBooks({ bookArr, filteredBooks }) {
+// library imports
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
+export default function FilterBooks({ bookArr, filteredBooks, term, getMoreBooks }) {
   
     // filterBooksByRating will check if a rating exists and then return an array
     // which will setBooks to update the list in state
@@ -22,12 +26,20 @@ export default function FilterBooks({ bookArr, filteredBooks }) {
         filteredBooks(mappedArray);
     }
 
+    const goNextPage = (term) => {
+        // term has [0] = 'fiction, [1] = 'mediumType' [2] = 'page'
+        getMoreBooks('click', term[0], term[2]);
+    }
+
     return (
         <div>
-            <h2>Filter Options:</h2>
-            <ul>
-                <li><button onClick={filterBooksByRating}>rating</button></li>
-            </ul>
+             <div className='filter-container'>
+                    <h2>Filter By:</h2>
+                    <button onClick={filterBooksByRating} className='filter-button'>Highest Rating</button>
+                </div>
+            <div className='next-section'>
+                    <button className='next-button' onClick={() => {goNextPage(term)}}>Next Page <FontAwesomeIcon className='modal-icon'  icon={ faChevronRight } /></button>
+            </div>       
         </div>
     )
 }

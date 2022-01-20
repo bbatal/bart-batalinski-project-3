@@ -55,3 +55,329 @@ ul {
     width: 90%;
     margin: 0 auto;
 }
+
+/* header styles begin */
+.header {
+  display: flex;
+  padding: 2.5em 0;
+  min-height: 200px;
+  background: linear-gradient(to right bottom, rgba(48, 67, 82, 0.6), rgba(215, 210, 204, 0.9)), url(./assets/ehud-neuhaus-hero.jpg);
+  background-size: cover;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.header-title {
+  text-align: center;
+  font-size: clamp(2rem, 2.2rem + 2vw, 3.6rem);
+  margin: 0 0 0.5em 0;
+}
+
+/* form section begins */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button {
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.header-select {
+  padding: 0.3em 1em 0.3em 0.5em;
+  font-size: 1rem;
+  border: 1px solid #CCC;
+  width: 200px;
+  margin: 0 auto;
+
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(./assets/drop-down.png) 96% / 15% no-repeat #EEE;
+  background-size: 7%;
+}
+
+.form-label {
+  text-align: center;
+  font-size: clamp(0.6rem, 0.6rem + 2vw, 1rem);
+  margin-bottom: 0.4em;
+  text-shadow: 10px 10px 11px #fff;
+}
+
+/* .book-store section begins */
+.book-store {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  z-index: 30;
+}
+
+
+/* main styles begin */
+main {
+  padding: 2.5em 0 3em 0;
+  position: relative;
+}
+/* .book-container section begins */
+.book-collection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1em 0em;
+}
+
+
+
+.book-list {
+  /* flex properties */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.flex-list-item {
+    margin: 1em;
+    position: relative;
+    flex-basis: min-content;
+    
+    /* display properties */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+        /* fading animation */
+    animation-name: FadeIn;
+    /*  change to 5s for temporary fix */
+    animation-duration: 2s;
+    transition-timing-function: linear;
+}
+
+@keyframes FadeIn {
+  0% {
+    opacity: 0.5;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.fav-button {
+  border: none;
+  background: transparent;
+  color: red;
+  font-size: 2rem;
+  padding: 0.3em 0.5em;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.fav-button > * {
+  pointer-events: none;
+}
+
+.heartIcon {
+  position: relative;
+  z-index: 5;
+}
+
+/* article button styling */
+.article-modal {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.cartMenu {
+  position: fixed;
+  background: whitesmoke;
+  max-width: 300px;
+  width: 300px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  height: 100%;
+
+  overflow-y: scroll;
+}
+
+/* modal styling begins */
+.card {
+  border-radius: 10px;
+  background: rgb(245, 245, 245);
+  max-width: 700px;
+  min-height: 500px;
+  
+
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-close-button {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  border-radius: 50%;
+  border: none;
+
+  background: transparent;
+  /* background-color: red; */
+}
+
+.modal-icon {
+  font-size: 1.3rem;
+
+  cursor: pointer;
+}
+
+.modal-left-section {
+  padding: 1em;
+  min-width: 45%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.modal-img-container {
+  flex-grow: 1;
+}
+
+.modal-img {
+  margin: 0 auto;
+}
+
+.modal-right-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em 1.5em 1.5em 1em;
+  
+}
+
+.modal-title {
+  font-size: 2rem;
+}
+
+.modal-link-button {
+  text-decoration: none;
+  color: black;
+  border: 1px solid black;
+  text-align: center;
+  align-self: center;
+  padding: 0.5em 1em;
+  background-color: rgb(245, 245, 245);
+
+  transition: all 0.1s ease-in;
+}
+
+.modal-link-button:hover,
+.modal-link-button:focus {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.modal-author-rating {
+  text-align: center;
+  margin-bottom: 0.2em;
+  font-size: 0.8rem;
+}
+ .modal-author-rating li {
+   margin-bottom: 1em;
+ }
+
+ /* FilterBooks Component styling */
+
+ .filter-button {
+   background: transparent;
+   border: none;
+   text-decoration: underline;
+   cursor: pointer;
+ }
+
+ .filter-container {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+ }
+
+  .next-section {
+   font-size: 0.9rem;
+   position: absolute;
+   z-index: 30;
+
+   top: 30px;
+   left: 0;
+ }
+
+ .next-button {
+     background: transparent;
+     border: none;
+     cursor: pointer;
+     display: flex;
+     align-items: center;
+     gap: 0.4em;
+     padding: 0;
+ }
+
+ /* Welcome to Media Query Land !*/
+ /* Watch out for the levitating water dragon snake */
+ @media (min-width: 650px) {
+    .form {
+      flex-direction: row;
+    }
+
+    .input-container {
+      width: calc((100% / 2) - 1em);
+    }
+ }
+
+
+ @media (min-width: 890px) {
+    .card {
+      flex-direction: row;
+    }
+
+    .book-collection {
+      padding: 1em 4em;
+    }
+ }

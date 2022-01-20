@@ -1,4 +1,5 @@
 import './Book.css';
+import CutString from '../utils';
 
 function Book(props) {
 
@@ -11,8 +12,7 @@ function Book(props) {
                 </div>
 
                 <div className='text-container'>
-                    <h2>{props.title}</h2>
-                    <p>{props.rating}</p>
+                    <h2>{CutString(props.title, 35)}</h2>
                 </div>
             </div>
         </article>
