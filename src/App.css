@@ -1,11 +1,68 @@
 /* header styles begin */
 .header {
   display: flex;
-  height: 8vh;
-  background-color: lightseagreen;
+  height: 40vh;
+  min-height: 200px;
+  background: linear-gradient(to right bottom, rgba(48, 67, 82, 0.6), rgba(215, 210, 204, 0.9)), url(./assets/ehud-neuhaus-hero.jpg);
+  background-size: cover;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+}
+
+.header-title {
+  text-align: center;
+  font-size: clamp(2rem, 2.2rem + 2vw, 3.6rem);
+  margin: 0 0 0.5em 0;
+}
+
+/* form section begins */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: calc((100% / 2) - 1em);
+}
+
+.form {
+  display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.search-button {
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.header-select {
+  padding: 0.3em 1em 0.3em 0.5em;
+  font-size: 1rem;
+  border: 1px solid #CCC;
+
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(./assets/drop-down.png) 96% / 15% no-repeat #EEE;
+  background-size: 7%;
+}
+
+/* .book-store section begins */
+.book-store {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+
+  position: absolute;
+  right: 3%;
+  top: 3%;
+  cursor: pointer;
+  z-index: 30;
 }
 
 
@@ -85,7 +142,7 @@ main {
 }
 
 .cartMenu {
-  position: absolute;
+  position: fixed;
   background: whitesmoke;
   max-width: 300px;
   width: 300px;

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import './Form.css'
 
 const Form = ({handleSubmitFunction, handleCounter}) => {
     const [userSubject, setUserSubject] = useState('fiction');
@@ -29,7 +28,7 @@ const Form = ({handleSubmitFunction, handleCounter}) => {
             <form className='form' onSubmit={ handleSubmit }>
                 <div className='input-container'>
                     <label htmlFor='subject'>Pick From a subject below</label>
-                    <select id="subject" name="Subject" onChange={ (handleSubject) } value={userSubject}>
+                    <select className='header-select' id="subject" name="Subject" onChange={ (handleSubject) } value={userSubject}>
                     <option value="beauty">Beauty</option>
                     <option value="animals">Animals</option>
                     <option value="fiction">Fiction</option>
@@ -45,7 +44,7 @@ const Form = ({handleSubmitFunction, handleCounter}) => {
 
             <div className='input-container'>
                 <label htmlFor='subject'>Pick Medium Type</label>
-                <select id="subject" name="Subject" onChange={ (e) => {setMediumType(e.target.value)} } value={mediumType}>
+                <select className='header-select' id="subject" name="Subject" onChange={ (e) => {setMediumType(e.target.value)} } value={mediumType}>
                 <option value="all">Any</option>
                 <option value="books">Book</option>
                 <option value="magazines">Magazine</option>
