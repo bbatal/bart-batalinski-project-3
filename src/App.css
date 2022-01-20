@@ -1,11 +1,80 @@
 /* header styles begin */
 .header {
   display: flex;
-  height: 8vh;
-  background-color: lightseagreen;
+  min-height: 50vh;
+  padding: 2.5em 0;
+  min-height: 200px;
+  background: linear-gradient(to right bottom, rgba(48, 67, 82, 0.6), rgba(215, 210, 204, 0.9)), url(./assets/ehud-neuhaus-hero.jpg);
+  background-size: cover;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+}
+
+.header-title {
+  text-align: center;
+  font-size: clamp(2rem, 2.2rem + 2vw, 3.6rem);
+  margin: 0 0 0.5em 0;
+}
+
+/* form section begins */
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-button {
+  padding: 0.3em 1em;
+  border-radius: 5px;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+}
+
+.header-select {
+  padding: 0.3em 1em 0.3em 0.5em;
+  font-size: 1rem;
+  border: 1px solid #CCC;
+  width: 200px;
+  margin: 0 auto;
+
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(./assets/drop-down.png) 96% / 15% no-repeat #EEE;
+  background-size: 7%;
+}
+
+.form-label {
+  text-align: center;
+  font-size: clamp(0.6rem, 0.6rem + 2vw, 1rem);
+  margin-bottom: 0.4em;
+  text-shadow: 10px 10px 11px #fff;
+}
+
+/* .book-store section begins */
+.book-store {
+  background: transparent;
+  border: none;
+  font-size: 1.8rem;
+
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  z-index: 30;
 }
 
 
@@ -85,7 +154,7 @@ main {
 }
 
 .cartMenu {
-  position: absolute;
+  position: fixed;
   background: whitesmoke;
   max-width: 300px;
   width: 300px;
@@ -183,5 +252,17 @@ main {
 }
  .modal-author-rating li {
    margin-bottom: 1em;
+ }
+
+ /* Welcome to Media Query Land !*/
+ /* Watch out for the levitating water dragon snake */
+ @media (min-width: 650px) {
+    .form {
+      flex-direction: row;
+    }
+
+    .input-container {
+      width: calc((100% / 2) - 1em);
+    }
  }
 

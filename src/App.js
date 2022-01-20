@@ -2,6 +2,8 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookReader } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import Book from './components/Book';
@@ -194,14 +196,16 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div>
       <header className="header">
+        <section>
+          <h1 className='header-title'>The Book Spot</h1>
         <Form
         handleSubmitFunction={handleSubmit}
         handleCounter={changeCounter}
         />
-
-        <button onClick={toggleCart}>cart</button>
+        </section>
+        <button onClick={toggleCart} className='book-store'><FontAwesomeIcon icon={ faBookReader } /></button>
         {cartView &&
           <section className='cartMenu'>
                   {
@@ -262,7 +266,6 @@ function App() {
                 }
 
                 {view &&
-                // TODO: add component here that will take in some object from click event
                 <Modal
                 title={sharedState.volumeInfo.title}
                 imgSrc={sharedState.volumeInfo.imageLinks 
