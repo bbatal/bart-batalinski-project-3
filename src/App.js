@@ -10,12 +10,13 @@ import Modal from './components/Modal';
 import BookCart from './components/BookCart';
 import firebaseProject from './firebaseSetup';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
+import FilterBooks from './components/FilterBooks';
 
 
 function App() {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  const [isHidden, setIsHidden] = useState(true);
+  const [isHidden, setIsHidden] = useState(false);
 
   // controls book pagination on clicking search button again
   const [offset, setOffset] = useState(0);
@@ -30,7 +31,7 @@ function App() {
   const [fireStorage, setFireStorage] = useState([]);
 
 
-  
+
   // make an API call to the Google Books API
   useEffect(() => {
     if(searchTerm.length > 0) {
@@ -171,15 +172,25 @@ function App() {
 
   const changeView = (bookObject) => {
     setSharedState(bookObject);
+
+    // closes cart component if it is open
+    setCartView(false);
     setView(true);
   }
 
+  // closes modal/ reopens list of books
   const turnOffModal = () => {
     setView(false);
   }
 
+  // toggles if side-menu is open or not
   const toggleCart = () => {
     setCartView(!cartView);
+  }
+
+  // updates books state by parameter
+  const filteredBooks = (newBookArray) => {
+    setBooks(newBookArray);
   }
 
   return (
@@ -220,6 +231,11 @@ function App() {
               />}
 
                 { !view &&
+                <>
+                <FilterBooks
+                bookArr={books}
+                filteredBooks={filteredBooks}
+                />
               <ul className='book-list'>              
                 {books.map((bookObj) => {
                     return (
@@ -231,6 +247,9 @@ function App() {
                           // error handling for if bookObj.volumeInfo.imageLinks is not valid
                           img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
                           title={bookObj.volumeInfo.title}
+                          rating={bookObj.volumeInfo.averageRating
+                          ? bookObj.volumeInfo.averageRating
+                          : 1 }
                           key={bookObj.id} 
                             />
 
@@ -239,6 +258,7 @@ function App() {
                     )
                   })}
                 </ul>
+                </>
                 }
 
                 {view &&
