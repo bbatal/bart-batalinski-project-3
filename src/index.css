@@ -162,10 +162,6 @@ ul {
   height: 100px;
 }
 
-.cart-article img {
-  /* height: 60%; */
-}
-
 .cart-article h2 {
   flex-grow: 1;
   text-align: center;
@@ -181,6 +177,9 @@ ul {
   border: none;
   cursor: pointer;
 
+
+  /* thank you for the linear gradient by Muhammed Erdem */
+  /* codepen: https://codepen.io/JavaScriptJunkie/pen/pPRooV */
   background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
 }
 
@@ -189,11 +188,15 @@ main {
   padding: 2.5em 0 3em 0;
   position: relative;
 }
+
+
 /* .book-container section begins */
 .book-collection {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 100%;
+  min-height: 50vh;
   position: relative;
   padding: 1em 0em;
 }
@@ -378,7 +381,7 @@ main {
   .next-section {
    font-size: 0.9rem;
    position: absolute;
-   z-index: 30;
+   z-index: 5;
 
    top: 30px;
    left: 0;
