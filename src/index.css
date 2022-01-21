@@ -254,13 +254,13 @@ main {
         /* fading animation */
     animation-name: FadeIn;
     /*  change to 5s for temporary fix */
-    animation-duration: 2s;
+    animation-duration:1.5s;
     transition-timing-function: linear;
 }
 
 @keyframes FadeIn {
   0% {
-    opacity: 0.5;
+    opacity: 0;
   }
 
   100% {
