@@ -41,6 +41,10 @@ label {
   text-transform: uppercase;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 /* responsive image */
 img {
@@ -411,6 +415,7 @@ h2 {
   align-self: center;
   padding: 0.5em 1em;
   background-color: rgb(245, 245, 245);
+  border-radius: 5px;
 
   transition: all 0.1s ease-in;
 }
@@ -465,8 +470,30 @@ h2 {
      padding: 0;
  }
 
+ /* Footer begins here */
+.footer {
+  padding: 1em 0;
+  background-color: inherit;
+  border-top: solid 2px rgba(121, 121, 121, 0.7);
+  text-align: center;
+}
+
+.footer-links {
+  color: black;
+}
+
+.name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6em;
+  margin-top: 0.35em;
+}
+
+
+
  /* Welcome to Media Query Land !*/
- /* Watch out for the levitating water dragon snake */
+ /* Watch out for the levitating water dragon snakes */
  @media (min-width: 650px) {
     .form {
       flex-direction: row;

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookReader, faHeart as heart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
 
 // components
@@ -15,6 +15,7 @@ import BookCart from './components/BookCart';
 import firebaseProject from './firebaseSetup';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -329,7 +330,7 @@ function App() {
 
         </div>
       </main>
-
+      <Footer />          
 
     </div>
   );
