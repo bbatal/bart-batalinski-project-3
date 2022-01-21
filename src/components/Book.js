@@ -11,7 +11,9 @@ function Book(props) {
                 </div>
 
                 <div className='text-container'>
-                    <h2>{CutString(props.title, 45)}</h2>
+                    <h2>{ props.title &&
+                    CutString(props.title, 45)
+                    }</h2>
                 </div>
             </div>
         </article>

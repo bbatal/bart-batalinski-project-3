@@ -6,7 +6,7 @@ const Form = ({handleSubmitFunction, handleCounter}) => {
 
     useEffect(() => {
         handleCounter();
-                
+    // TODO: fix the memory leak present here
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userSubject])
 
@@ -34,11 +34,16 @@ const Form = ({handleSubmitFunction, handleCounter}) => {
                     <option value="fiction">Fiction</option>
                     <option value="science">Science</option>
                     <option value="business">Business</option>
-                    <option value="children">Children's</option>
+                    <option value="novel">novel</option>
                     <option value="history">History</option>
                     <option value="health">Health</option>
                     <option value="biography">Biography</option>
-                    <option value="textbooks">Textbooks</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="science fiction">Science Fiction</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="crime">Crime</option>
+                    <option value="historical fiction">Historical Fiction</option>
+                    <option value="short story">Short Story</option>
                     </select>
             </div>
 
