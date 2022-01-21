@@ -8,10 +8,6 @@ export default function Modal(props) {
 // have a remove button that will change the view state and bring back books
 const {title, imgSrc, imgAlt, description, authors, linkToBook, pageCount, rating, closeModal, printType} = props;
 
-// TODO: add function to close modal and bring back book list view
-
-// TODO: use full description but clip it at a certain length and add a button to expand the description
-    console.log(printType);
     return (
         <article className='card'>
             <button onClick={closeModal}  className='modal-close-button'><FontAwesomeIcon className='modal-icon'  icon={ faTimesCircle } /></button>
