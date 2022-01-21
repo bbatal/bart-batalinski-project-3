@@ -34,6 +34,9 @@ function App() {
   // firebase favourites array/state
   const [fireStorage, setFireStorage] = useState([]);
 
+  // error state
+  const [error, setError] = useState(false);
+
 
 
   // make an API call to the Google Books API
@@ -56,6 +59,10 @@ function App() {
       .then((response) => {
         setIsHidden(true)
         setBooks(response.data.items)
+      })
+      .catch((error) => {
+        setIsHidden(true);
+        setError(true);
       })
     }
   }, [searchTerm])
@@ -252,41 +259,45 @@ function App() {
               className="loading-icon" 
               />}
 
-                { !view &&
-                <>
-                <FilterBooks
-                term={searchTerm}
-                getMoreBooks={handleSubmit}
-                bookArr={books}
-                filteredBooks={filteredBooks}
-                />
-              <ul className='book-list'>              
-                {books.map((bookObj) => {
-                    return (
-                      <li className="flex-list-item" key={bookObj.id}>
-                        <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>{bookObj.clicked ?<FontAwesomeIcon  icon={ heart } /> 
-                          :  <FontAwesomeIcon icon={ farHeart } />
-                      
-                      }</button>
-
-                        <button className='article-modal' onClick={() => {changeView(bookObj)}}>
-                          <Book
-                          // error handling for if bookObj.volumeInfo.imageLinks is not valid
-                          img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
-                          title={bookObj.volumeInfo.title}
-                          rating={bookObj.volumeInfo.averageRating
-                          ? bookObj.volumeInfo.averageRating
-                          : 1 }
-                          key={bookObj.id} 
-                            />
-
-                        </button>
-                      </li>
-                    )
-                  })}
-                </ul>
-                </>
+                {
+                  error && <h2 className='loading-icon'>Sorry the network seems to be down, please try again soon</h2>
                 }
+
+                  { !view &&
+                  <>
+                  <FilterBooks
+                  term={searchTerm}
+                  getMoreBooks={handleSubmit}
+                  bookArr={books}
+                  filteredBooks={filteredBooks}
+                  />
+                  <ul className='book-list'>              
+                    {books.map((bookObj) => {
+                        return (
+                          <li className="flex-list-item" key={bookObj.id}>
+                            <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>{bookObj.clicked ?<FontAwesomeIcon  icon={ heart } /> 
+                              :  <FontAwesomeIcon icon={ farHeart } />
+                          
+                          }</button>
+
+                            <button className='article-modal' onClick={() => {changeView(bookObj)}}>
+                              <Book
+                              // error handling for if bookObj.volumeInfo.imageLinks is not valid
+                              img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
+                              title={bookObj.volumeInfo.title}
+                              rating={bookObj.volumeInfo.averageRating
+                              ? bookObj.volumeInfo.averageRating
+                              : 1 }
+                              key={bookObj.id} 
+                                />
+
+                            </button>
+                          </li>
+                        )
+                      })}
+                  </ul>
+                  </>
+                  }
 
                 {view &&
                 <Modal
