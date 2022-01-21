@@ -1,4 +1,3 @@
-import './Book.css';
 import CutString from '../utils';
 
 function Book(props) {
