@@ -20,7 +20,7 @@ const {title, imgSrc, imgAlt, description, authors, linkToBook, pageCount, ratin
                     <img src={imgSrc} alt={imgAlt} className='modal-img' />
                 </div>
 
-                <a href={linkToBook} target="_blank" rel="noreferrer" className='modal-link-button'>Buy this {printType === 'MAGAZINE' ? 'Magazine' : 'Book'}</a>
+                <a href={linkToBook} target="_blank" rel="noreferrer" className='modal-link-button'>Buy {printType === 'MAGAZINE' ? 'Magazine' : 'Book'}</a>
             </div>
 
             <div className='modal-right-section'>

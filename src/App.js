@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookReader, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faBookReader, faHeart as heart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons'
+
 
 // components
 import Book from './components/Book';
@@ -95,7 +97,17 @@ function App() {
       //   return singleBook.id !== e.target.value;
       // })
       // setBooks(copyArr);
-      // TODO: onclick add this book to firebase
+
+      const newArr = books.map((individualBook) => {
+        if (individualBook.id === e.target.value) {
+          individualBook.clicked = true;
+          return individualBook;
+        }
+
+        return individualBook;
+      })
+
+      setBooks(newArr);
       // check if firebase already has this book in which case dont add it
       const clickedBookId = e.target.value;
       const bookObj = {};
@@ -205,7 +217,13 @@ function App() {
         handleCounter={changeCounter}
         />
         </section>
-        <button onClick={toggleCart} className='book-store'><FontAwesomeIcon icon={ faBookReader } /></button>
+        <button onClick={toggleCart} className='book-store'><FontAwesomeIcon icon={ faBookReader } />
+        {
+          fireStorage.length > 0 && !cartView ? 
+          <p className='notification'>{fireStorage.length}</p>
+          : null
+        }
+        </button>
         {cartView &&
           <section className='cartMenu'>
                   {
@@ -246,7 +264,10 @@ function App() {
                 {books.map((bookObj) => {
                     return (
                       <li className="flex-list-item" key={bookObj.id}>
-                        <button className='fav-button' onClick={handleAddBook} value={bookObj.id}><FontAwesomeIcon icon={ faHeart } /></button>
+                        <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>{bookObj.clicked ?<FontAwesomeIcon  icon={ heart } /> 
+                          :  <FontAwesomeIcon icon={ farHeart } />
+                      
+                      }</button>
 
                         <button className='article-modal' onClick={() => {changeView(bookObj)}}>
                           <Book
