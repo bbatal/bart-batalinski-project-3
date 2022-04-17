@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# The Book Spot: The place to find your next adventure
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
