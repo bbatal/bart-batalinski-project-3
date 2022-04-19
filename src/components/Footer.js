@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <a href="https://junocollege.com/" target="_blank" rel="noreferrer" className="footer-links">
-        <p class="juno-credit">Created at ©Juno College by:</p>
+        <p className="juno-credit">Created at ©Juno College by:</p>
       </a>
 
       <a href="https://www.linkedin.com/in/bart-batalinski/" target="_blank" rel="noreferrer" className="footer-links name-container">
