@@ -1,4 +1,3 @@
-import './index.css';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import MainView from './MainView';
 import Profile from './authComponents/Profile'
