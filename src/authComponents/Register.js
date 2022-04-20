@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './forms.css';
+import { auth } from '../firebaseSetup';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 function Register() {
 
@@ -9,13 +11,41 @@ function Register() {
     const [confirmPassword, setConfirmPassword] = useState('')
     const [error, setError] = useState('')
 
+    const validatePassword = () => {
+        let isValid = true;
+        if (password !== '' && confirmPassword !== '') {
+            if (password !== confirmPassword) {
+                isValid = false
+                setError('Passwords do not match')
+            }
+        }
+        return isValid;
+    }
+
+    const register = e => {
+        e.preventDefault()
+        setError('')
+        if(validatePassword()) {
+            // Create a new user with email and password using firebase
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((res) => {
+                console.log(res.user);
+            })
+            .catch(err => setError(err.message))
+        }
+
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+    }
+
     return (
         <div className='center'>
             <div className='auth'>
                 <h1>Register</h1>
                 {error && <div className='auth__error'>{error}</div>}
 
-                <form name='registration_form'>
+                <form onSubmit={register} name='registration_form'>
                     <input
                        type='email'
                        value={email}
