@@ -12,7 +12,7 @@ import Book from './components/Book';
 import Form from './components/Form';
 import Modal from './components/Modal';
 import BookCart from './components/BookCart';
-import firebaseProject from './firebaseSetup';
+import { firebaseProject } from './firebaseSetup';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
 import Footer from './components/Footer';

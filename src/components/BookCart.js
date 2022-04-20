@@ -1,4 +1,4 @@
-import firebaseProject from '../firebaseSetup.js';
+import { firebaseProject } from '../firebaseSetup.js';
 import { getDatabase, ref, remove } from 'firebase/database';
 import CutString from '../utils.js';
 
