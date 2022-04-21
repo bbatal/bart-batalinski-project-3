@@ -5,16 +5,25 @@ import Register from './authComponents/Register'
 import VerifyEmail from './authComponents/VerifyEmail';
 import Login from './authComponents/Login'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AuthProvider } from './AuthContext';
+import { auth } from './firebaseSetup'
+import { onAuthStateChanged } from 'firebase/auth'
 
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [timeActive, setTimeActive] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setCurrentUser(user);
+    })
+  }, [])
 
   return (
     <Router>
-      <AuthProvider value={{currentUser}}>
+      <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
           <Route exact path="/" element={<MainView />} />
           <Route exact path="/profile" element={<Profile />} />
