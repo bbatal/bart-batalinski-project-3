@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 import { AuthProvider } from './AuthContext';
 import { auth } from './firebaseSetup'
 import { onAuthStateChanged } from 'firebase/auth'
+import PrivateRoute from './PrivateRoute';
 
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
           <Route exact path="/" element={<MainView />} />
-          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path='/profile' element={<PrivateRoute />}>
+            <Route exact path="/profile" element={<Profile />} />
+          </Route>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path='/verify-email' element={<VerifyEmail />} />

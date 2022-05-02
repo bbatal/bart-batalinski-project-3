@@ -4,12 +4,30 @@ import { useAuthValue } from '../AuthContext';
 import { useState, useEffect } from 'react';
 import { auth } from '../firebaseSetup';
 import { sendEmailVerification } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 
 function VerifyEmail() {
     const { currentUser } = useAuthValue();
     const [time, setTime] = useState(60);
     const { timeActive, setTimeActive } = useAuthValue();
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            currentUser?.reload()
+            .then(() => {
+                if(currentUser?.emailVerified) {
+                    clearInterval(interval)
+                    navigate('/profile')
+                }
+            })
+            .catch((err) => {
+                alert(err.message)
+            })
+        }, 1000)
+    }, [])
     
 
     useEffect(() => {
