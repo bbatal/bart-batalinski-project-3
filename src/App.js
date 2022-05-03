@@ -27,9 +27,7 @@ function App() {
       <AuthProvider value={{currentUser, timeActive, setTimeActive}}>
         <Routes>
           <Route exact path="/" element={<MainView />} />
-          <Route exact path='/profile' element={<PrivateRoute />}>
-            <Route exact path="/profile" element={<Profile />} />
-          </Route>
+          <Route exact path='/profile' element={<PrivateRoute> <Profile /> </PrivateRoute>} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path='/verify-email' element={<VerifyEmail />} />
