@@ -13,12 +13,13 @@ import Form from './components/Form';
 import Modal from './components/Modal';
 import BookCart from './components/BookCart';
 import { firebaseProject } from './firebaseSetup';
-import { getDatabase, ref, onValue, push } from 'firebase/database';
+import { getDatabase, ref, onValue, push, set } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
 import Footer from './components/Footer';
 
 // Auth Components
 import Profile from './authComponents/Profile';
+import { useAuthValue } from './AuthContext';
 
 function MainView() {
   const [books, setBooks] = useState([]);
@@ -40,6 +41,8 @@ function MainView() {
   // error state
   const [error, setError] = useState(false);
 
+  // Auth State
+  const {currentUser} = useAuthValue();
 
 
   // make an API call to the Google Books API
@@ -152,7 +155,7 @@ function MainView() {
         // create a reference to our database
         const database = getDatabase(firebaseProject);
 
-        const dbRootAddress = ref(database);
+        const dbRootAddress = set(ref(database, `users/${currentUser?.uid}`));
 
         push(dbRootAddress, bookObj);
       }
@@ -165,8 +168,9 @@ function MainView() {
     const database = getDatabase(firebaseProject);
 
     // this is dbRef in our notes, BUT, what it IS is the location of the root of our database! database root address! where our data goes to live a nice quiet life hopefully
-    const dbRootAddress = ref(database);
+    const dbRootAddress = ref(database, 'users/');
 
+    
     onValue(dbRootAddress, (response) => {
       // console.log(response.val());
       // format the data we get back first
