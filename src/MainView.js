@@ -17,6 +17,9 @@ import { getDatabase, ref, onValue, push } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
 import Footer from './components/Footer';
 
+// Auth Components
+import Profile from './authComponents/Profile';
+
 function MainView() {
   const [books, setBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -217,6 +220,7 @@ function MainView() {
   return (
     <div>
       <header className="header">
+        <Profile />
         <section>
           <h1 className='header-title'>The Book Spot</h1>
         <Form
