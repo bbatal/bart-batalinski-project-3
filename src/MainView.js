@@ -110,7 +110,7 @@ function MainView() {
       //   return singleBook.id !== e.target.value;
       // })
       // setBooks(copyArr);
-
+      console.log(currentUser.email);
       const newArr = books.map((individualBook) => {
         if (individualBook.id === e.target.value) {
           individualBook.clicked = true;
@@ -156,9 +156,9 @@ function MainView() {
         const database = getDatabase(firebaseProject);
 
         const parsedJson = JSON.parse(JSON.stringify(currentUser?.uid))
-        const dbRootAddress = set(ref(database, `users/${parsedJson}`));
+        const dbRootAddress = set(ref(database, `users/${parsedJson}`), bookObj);
 
-        push(dbRootAddress, bookObj);
+        // push(dbRootAddress, bookObj);
       }
       
   }
@@ -169,7 +169,7 @@ function MainView() {
     const database = getDatabase(firebaseProject);
 
     // this is dbRef in our notes, BUT, what it IS is the location of the root of our database! database root address! where our data goes to live a nice quiet life hopefully
-    const dbRootAddress = ref(database, 'users/');
+    const dbRootAddress = ref(database);
 
     
     onValue(dbRootAddress, (response) => {
