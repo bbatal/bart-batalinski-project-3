@@ -155,7 +155,8 @@ function MainView() {
         // create a reference to our database
         const database = getDatabase(firebaseProject);
 
-        const dbRootAddress = set(ref(database, `users/${currentUser?.uid}`));
+        const parsedJson = JSON.parse(JSON.stringify(currentUser?.uid))
+        const dbRootAddress = set(ref(database, `users/${parsedJson}`));
 
         push(dbRootAddress, bookObj);
       }
