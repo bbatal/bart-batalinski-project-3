@@ -155,8 +155,7 @@ function MainView() {
         // create a reference to our database
         const database = getDatabase(firebaseProject);
 
-        const parsedJson = JSON.parse(JSON.stringify(currentUser?.uid))
-        const dbRootAddress = set(ref(database, `users/${parsedJson}`), bookObj);
+        const dbRootAddress = set(ref(database, `users/${currentUser?.uid}`), bookObj);
 
         // push(dbRootAddress, bookObj);
       }
@@ -169,8 +168,8 @@ function MainView() {
     const database = getDatabase(firebaseProject);
 
     // this is dbRef in our notes, BUT, what it IS is the location of the root of our database! database root address! where our data goes to live a nice quiet life hopefully
-    const dbRootAddress = ref(database);
-
+    const dbRootAddress = ref(database, `users/${currentUser?.uid}`);
+    // console.log(dbRootAddress)
     
     onValue(dbRootAddress, (response) => {
       // console.log(response.val());
@@ -181,6 +180,7 @@ function MainView() {
       // title: "book title"
       // }
 
+      console.log(response.val());
       const newBooks = [];
 
       // look through our data and put the data in the temp array
