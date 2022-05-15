@@ -13,7 +13,7 @@ import Form from './components/Form';
 import Modal from './components/Modal';
 import BookCart from './components/BookCart';
 import { firebaseProject } from './firebaseSetup';
-import { getDatabase, ref, onValue, push, set } from 'firebase/database';
+import { getDatabase, ref, onValue, push, set, child } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
 import Footer from './components/Footer';
 
@@ -155,9 +155,12 @@ function MainView() {
         // create a reference to our database
         const database = getDatabase(firebaseProject);
 
-        const dbRootAddress = set(ref(database, `users/${currentUser?.uid}`), bookObj);
+        // Get a key for a new Post.
+        // Generates a new key for every new book added
+        const newPostKey = push(child(ref(database), `users/${currentUser?.uid}/books`)).key;
 
-        // push(dbRootAddress, bookObj);
+
+        const dbRootAddress = set(ref(database, `users/${currentUser?.uid}/${newPostKey}`), bookObj);
       }
       
   }
