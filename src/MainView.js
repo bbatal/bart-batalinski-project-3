@@ -110,7 +110,6 @@ function MainView() {
       //   return singleBook.id !== e.target.value;
       // })
       // setBooks(copyArr);
-      console.log(currentUser.email);
       const newArr = books.map((individualBook) => {
         if (individualBook.id === e.target.value) {
           individualBook.clicked = true;
@@ -182,8 +181,6 @@ function MainView() {
       // src: "image source url",
       // title: "book title"
       // }
-
-      console.log(response.val());
       const newBooks = [];
 
       // look through our data and put the data in the temp array

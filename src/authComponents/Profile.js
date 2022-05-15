@@ -10,7 +10,7 @@ function Profile() {
   
   return (
     <Div className='profile'>
-      <h3>Welcome {currentUser?.email}</h3>
+      <h3>Welcome {currentUser?.email == 'bartbatalinski@gmail.com' ? 'Guest' : currentUser?.email}</h3>
       <Button onClick={() => signOut(auth)}>Sign Out</Button>
     </Div>
   )

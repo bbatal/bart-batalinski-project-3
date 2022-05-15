@@ -33,6 +33,15 @@ function Login(){
     .catch(err => setError(err.message))
   }
 
+  const handleGuestLogin = (e) => {
+    e.preventDefault();
+    console.log('hello');
+    signInWithEmailAndPassword(auth, 'bartbatalinski@gmail.com', 'notARealPassword')
+    .then(() => {
+      navigate('/profile');
+    })
+  }
+
   return(
     <div className='center'>
       <div className='auth'>
@@ -54,6 +63,7 @@ function Login(){
             onChange={e => setPassword(e.target.value)}/>
 
           <button type='submit'>Login</button>
+          <button onClick={(e) => handleGuestLogin(e)}>Login as Guest</button>
         </form>
         <p>
           Don't have and account? 
