@@ -35,7 +35,6 @@ function Login(){
 
   const handleGuestLogin = (e) => {
     e.preventDefault();
-    console.log('hello');
     signInWithEmailAndPassword(auth, 'bartbatalinski@gmail.com', 'notARealPassword')
     .then(() => {
       navigate('/profile');

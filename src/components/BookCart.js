@@ -1,16 +1,19 @@
 import { firebaseProject } from '../firebaseSetup.js';
 import { getDatabase, ref, remove } from 'firebase/database';
 import CutString from '../utils.js';
+import { useAuthValue } from '../AuthContext.js';
 
 export default function BookCart({ title, imgSrc, id }) {
+
+    const { currentUser } = useAuthValue();
 
     const handleRemove = (id) => {
     // create a reference to our database
     const database = getDatabase(firebaseProject);
 
     // get the address of the particular book that we want to remove
-    console.log(id);
-    const dbBookAddress = ref(database, `/${id}`);
+    // console.log(id);
+    const dbBookAddress = ref(database, `/users/${currentUser?.uid}/${id}`);
 
     // remove the data from the database
     remove(dbBookAddress);

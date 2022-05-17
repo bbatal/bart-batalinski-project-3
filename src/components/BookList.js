@@ -4,15 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as heart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
-// styling
-import styled from 'styled-components';
-
 export default function BookList({bookListArray, handleAddBook, changeView}) {
   return (
-     <Ul>              
+     <ul className='book-list'>              
                     {bookListArray.map((bookObj) => {
                         return (
-                          <li key={bookObj.id}>
+                          <li className="flex-list-item" key={bookObj.id}>
                             <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>{bookObj.clicked ?<FontAwesomeIcon  icon={ heart } /> 
                               :  <FontAwesomeIcon icon={ farHeart } />
                           
@@ -33,12 +30,6 @@ export default function BookList({bookListArray, handleAddBook, changeView}) {
                           </li>
                         )
                       })}
-                  </Ul>
+                  </ul>
   )
 }
-
-const Ul = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  min-height: 280vh;
-`;

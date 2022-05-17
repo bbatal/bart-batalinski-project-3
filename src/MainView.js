@@ -3,12 +3,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookReader, faHeart as heart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faBookReader } from '@fortawesome/free-solid-svg-icons';
 
 
 // components
-import Book from './components/Book';
 import Form from './components/Form';
 import Modal from './components/Modal';
 import BookCart from './components/BookCart';
@@ -160,7 +158,7 @@ function MainView() {
         const newPostKey = push(child(ref(database), `users/${currentUser?.uid}/books`)).key;
 
 
-        const dbRootAddress = set(ref(database, `users/${currentUser?.uid}/${newPostKey}`), bookObj);
+        set(ref(database, `users/${currentUser?.uid}/${newPostKey}`), bookObj);
       }
       
   }
@@ -198,7 +196,7 @@ function MainView() {
       setFireStorage(newBooks);
 
     })
-  }, []);
+  }, [currentUser.uid]);
 
   const changeView = (bookObject) => {
     setSharedState(bookObject);
@@ -310,7 +308,7 @@ function MainView() {
                   <BookList 
                     bookListArray={books}
                     handleAddBook={handleAddBook}
-                    chhangeView={changeView}
+                    changeView={changeView}
                   />
                   </>
                   }
