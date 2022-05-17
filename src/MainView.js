@@ -20,6 +20,7 @@ import Footer from './components/Footer';
 // Auth Components
 import Profile from './authComponents/Profile';
 import { useAuthValue } from './AuthContext';
+import BookList from './components/BookList';
 
 function MainView() {
   const [books, setBooks] = useState([]);
@@ -280,7 +281,7 @@ function MainView() {
                   bookArr={books}
                   filteredBooks={filteredBooks}
                   />
-                  <ul className='book-list'>              
+                  {/* <ul className='book-list'>              
                     {books.map((bookObj) => {
                         return (
                           <li className="flex-list-item" key={bookObj.id}>
@@ -304,7 +305,13 @@ function MainView() {
                           </li>
                         )
                       })}
-                  </ul>
+                  </ul> */}
+
+                  <BookList 
+                    bookListArray={books}
+                    handleAddBook={handleAddBook}
+                    chhangeView={changeView}
+                  />
                   </>
                   }
 
