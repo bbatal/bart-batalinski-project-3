@@ -163,6 +163,27 @@ ul {
   left: -10px;
 }
 
+/* account box begins */
+.account {
+  position: absolute;
+  top: 5px;
+  left: 20px;
+}
+
+.account-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.account .icon {
+  font-size: 1.6rem;
+  position: absolute;
+  z-index: 10;
+}
+ 
+/* account box ends */
+
 .cartMenu {
   position: fixed;
   background: whitesmoke;
@@ -502,7 +523,7 @@ h2 {
       height: fit-content;
     }
   
-    img {
+    .img-container img {
       width: 90%;
       height: auto;
     }

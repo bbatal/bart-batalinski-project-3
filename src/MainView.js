@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBookReader } from '@fortawesome/free-solid-svg-icons';
+import { faBookReader, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 // components
@@ -30,6 +30,7 @@ function MainView() {
   const [counter, setCounter] = useState(10);
   const [view, setView] = useState(false);
   const [cartView, setCartView] = useState(false);
+  const [accountView, setAccountView] = useState(false);
 
   // information sharing between components
   const [sharedState, setSharedState] = useState({});
@@ -216,6 +217,11 @@ function MainView() {
     setCartView(!cartView);
   }
 
+  // toggles if account-menu is open or not
+  const toggleAccount = () => {
+    setAccountView(!accountView);
+  }
+
   // updates books state by parameter
   const filteredBooks = (newBookArray) => {
     setBooks(newBookArray);
@@ -224,7 +230,15 @@ function MainView() {
   return (
     <div>
       <header className="header">
-        <Profile />
+        <div className="account">
+          <button className='account-btn' onClick={toggleAccount}>
+              <FontAwesomeIcon className='icon' icon={ faUser } />
+          </button>
+
+
+            {accountView && <Profile />}
+        </div>
+        
         <section>
           <h1 className='header-title'>The Book Spot</h1>
         <Form

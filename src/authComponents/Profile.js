@@ -19,13 +19,15 @@ function Profile() {
 }
 
 const Div = styled.div`
-  display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
+  display: flex;
+  background-color: rgb(249,249,249);
+  padding: 2em;
+  min-width: 200px;
   position: absolute;
-  left: 20px;
-  top: 20px;
+  top: 0px;
 `;
 
 const Button = styled.button`
