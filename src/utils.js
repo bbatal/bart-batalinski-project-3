@@ -12,3 +12,18 @@ const CutString = (string, desiredLength) => {
 }
 
 export default CutString;
+
+const trimEmail = (s) => {
+    // split up characters in string
+    const emailArr = s.split("");
+
+    // remove after certain character
+    emailArr.splice(emailArr.indexOf('@'));
+
+    // turn back into a string
+    const cutStr = emailArr.join("")
+
+    return cutStr
+}
+
+export { trimEmail };

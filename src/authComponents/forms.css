@@ -1,0 +1,71 @@
+.auth {
+    width: 90%;
+    max-width: 400px;
+    border: 1px solid #dcdcdc;
+    background-color: hsl(210, 10%, 98%);
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.auth form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto 10px auto;
+}
+
+.auth h1 {
+    margin-bottom: 0.4em;
+}
+
+.auth__success {
+    padding: 10px 0;
+    background-color: hsl(147, 79%, 87%);
+    margin-bottom: 20px;
+}
+
+.auth__error {
+    padding: 10px 0;
+    background-color: hsl(0, 79%, 87%);
+    margin-bottom: 20px;
+}
+
+.auth span {
+    margin: 0 0.2em;
+    display: block;
+}
+
+.auth form>input,
+button {
+    min-height: 40px;
+    font-size: 16px;
+    padding: 0 10px;
+    
+}
+
+.auth button,
+.verifyEmail button {
+    padding: 0.3em 1em;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in;
+}
+
+.auth button:hover,
+.verifyEmail button:hover {
+    background-color: black;
+    color: white;
+}
+
+.center {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right bottom, rgba(48, 67, 82, 0.6), rgba(215, 210, 204, 0.9)), url(../assets/ehud-neuhaus-hero.jpg);
+    background-size: cover;
+}
