@@ -227,7 +227,7 @@ main {
   min-width: 100%;
   min-height: 70vh;
   position: relative;
-  padding: 1em 0em;
+  padding: 2.5em 0em;
 }
 
 
@@ -238,6 +238,7 @@ main {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  padding: 2.8rem 0 0 0;
 }
 
 .flex-list-item {
@@ -293,7 +294,7 @@ main {
 
 /* Book.js styles begin here */
 .book-container {
-    width: calc((100% / 4) - 2em);
+    width: calc((100% / 4) - 1em);
     margin: 1em;
     position: relative;
     
@@ -493,7 +494,26 @@ h2 {
 
 
  /* Welcome to Media Query Land !*/
- /* Watch out for the levitating water dragon snakes */
+ /* Watch out for the levitating water snakes */
+ @media (min-width: 200px) {
+  .img-container {
+      width: 100vw;
+      max-width: 335px;
+      height: fit-content;
+    }
+  
+    img {
+      width: 90%;
+      height: auto;
+    }
+
+    .fav-button {
+      font-size: 2.5rem;
+      top: -20px;
+      right: -5px;
+    }
+ }
+
  @media (min-width: 650px) {
     .form {
       flex-direction: row;
@@ -502,6 +522,17 @@ h2 {
     .input-container {
       width: calc((100% / 2) - 1em);
     }
+
+    .img-container {
+        width: 220px;
+        height: 250px;
+    }
+
+    .fav-button {
+      top: -40px;
+      right: -12px;
+    }
+
  }
 
 
@@ -512,5 +543,20 @@ h2 {
 
     .book-collection {
       padding: 1em 4em;
+    }
+
+    .img-container {
+      width: 170px;
+      height: 250px;
+    }
+
+    .flex-list-item {
+      margin: 0.5em;
+    }
+
+    .fav-button {
+      font-size: 2.5rem;
+      top: -10px;
+      right: -15px;
     }
  }
