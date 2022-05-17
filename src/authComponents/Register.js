@@ -80,12 +80,10 @@ function Register() {
 
                     <button type='submit'>Register</button>
                 </form>
-                <span>
+                <p>
                     Already have an account?
-                    <Link to='/login'>login</Link>
-
-                    Or Log in as guest
-                </span>
+                    <Link to='/login'><span>login</span></Link>
+                </p>
 
             </div>
 
