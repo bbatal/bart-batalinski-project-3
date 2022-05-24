@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle, faStar } from '@fortawesome/free-solid-svg-icons';
 
 import CutString from '../utils.js';
+import Truncate from './Truncate.js';
 
 export default function Modal(props) {
 // render all the information on the page
@@ -32,7 +33,12 @@ const {title, imgSrc, imgAlt, description, authors, linkToBook, pageCount, ratin
                     {rating && <li><p><FontAwesomeIcon className='modal-icon'  icon={ faStar } /> {rating}</p></li>}
                 </ul>
 
-                <p>{CutString(description, 250)}</p>
+                    <Truncate
+                    toBeTruncated={description}
+                    amount={250}
+                    />
+                    
+                    {/* {CutString(description, 250)}</p> */}
 
             </div>
             

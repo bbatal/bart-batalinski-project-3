@@ -1,8 +1,8 @@
 // function to cut down the description length a bit
-const CutString = (string, desiredLength) => {
+const CutString = (toBeTruncated, desiredLength) => {
     let length = desiredLength;
-    if (string !== null) {
-        let trimmedStr = string.substring(0, length);
+    if (toBeTruncated !== null) {
+        let trimmedStr = toBeTruncated.substring(0, length);
         if(trimmedStr.length === desiredLength) {
             trimmedStr += '...';
         }
