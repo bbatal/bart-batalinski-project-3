@@ -17,6 +17,9 @@ export default function Truncate(props) {
 
 const Div = styled.div`
   overflow: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 200px;
-`
+  cursor: pointer;
+  position: relative;
+`;
+
