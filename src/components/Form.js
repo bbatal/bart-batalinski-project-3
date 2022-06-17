@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+const formOptions = ['beauty', 'animals', 'fiction', 'science', 'business', 'novel', 'history', 'health', 'biography', 'mystery', 'science fiction', 'thriller', 'crime', 'historical fiction', 'short story'];
+
 const Form = ({handleSubmitFunction, handleCounter}) => {
     const [userSubject, setUserSubject] = useState('fiction');
     const [mediumType, setMediumType] = useState('all');
@@ -29,21 +31,11 @@ const Form = ({handleSubmitFunction, handleCounter}) => {
                 <div className='input-container'>
                     <label htmlFor='subject' className='form-label'>Subject</label>
                     <select className='header-select' id="subject" name="Subject" onChange={ (handleSubject) } value={userSubject}>
-                    <option value="beauty">Beauty</option>
-                    <option value="animals">Animals</option>
-                    <option value="fiction">Fiction</option>
-                    <option value="science">Science</option>
-                    <option value="business">Business</option>
-                    <option value="novel">novel</option>
-                    <option value="history">History</option>
-                    <option value="health">Health</option>
-                    <option value="biography">Biography</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="science fiction">Science Fiction</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="crime">Crime</option>
-                    <option value="historical fiction">Historical Fiction</option>
-                    <option value="short story">Short Story</option>
+                    {formOptions.map((option) => {
+                        return (
+                            <option value={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</option>
+                        )
+                    })}
                     </select>
             </div>
 
