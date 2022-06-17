@@ -11,7 +11,7 @@ export default function FilterBooks({ bookArr, filteredBooks, term, getMoreBooks
 
             // error handling for if a book or mag does not have a rating
             if(book.volumeInfo.averageRating === undefined) {
-                book.volumeInfo.averageRating = 1;
+                book.volumeInfo.averageRating = 'n/a';
                 return book
             }
 
@@ -35,7 +35,9 @@ export default function FilterBooks({ bookArr, filteredBooks, term, getMoreBooks
         <div>
              <div className='filter-container'>
                     <h2>Filter By:</h2>
-                    <button onClick={filterBooksByRating} className='filter-button'>Highest Rating</button>
+                    <button 
+                    onClick={filterBooksByRating} className='filter-button' data-testid='filter-button'>
+                        Highest Rating</button>
                 </div>
             <div className='next-section'>
                     <button className='next-button' onClick={() => {goNextPage(term)}}>Next Page <FontAwesomeIcon className='modal-icon'  icon={ faChevronRight } /></button>
