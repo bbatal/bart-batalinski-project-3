@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookReader, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
+
 // components
 import Form from './components/Form';
 import Modal from './components/Modal';
@@ -293,31 +294,6 @@ function MainView() {
                   bookArr={books}
                   filteredBooks={filteredBooks}
                   />
-                  {/* <ul className='book-list'>              
-                    {books.map((bookObj) => {
-                        return (
-                          <li className="flex-list-item" key={bookObj.id}>
-                            <button className='fav-button' onClick={handleAddBook} value={bookObj.id}>{bookObj.clicked ?<FontAwesomeIcon  icon={ heart } /> 
-                              :  <FontAwesomeIcon icon={ farHeart } />
-                          
-                          }</button>
-
-                            <button className='article-modal' onClick={() => {changeView(bookObj)}}>
-                              <Book
-                              // error handling for if bookObj.volumeInfo.imageLinks is not valid
-                              img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
-                              title={bookObj.volumeInfo.title}
-                              rating={bookObj.volumeInfo.averageRating
-                              ? bookObj.volumeInfo.averageRating
-                              : 1 }
-                              key={bookObj.id} 
-                                />
-
-                            </button>
-                          </li>
-                        )
-                      })}
-                  </ul> */}
 
                   <BookList 
                     bookListArray={books}
@@ -327,7 +303,7 @@ function MainView() {
                   </>
                   }
 
-                {view &&
+                {/* {view &&
                 <Modal
                 title={sharedState.volumeInfo.title}
                 imgSrc={sharedState.volumeInfo.imageLinks 
@@ -351,7 +327,7 @@ function MainView() {
                 closeModal={turnOffModal}
                  />
 
-                }
+                } */}
 
           </section>
 

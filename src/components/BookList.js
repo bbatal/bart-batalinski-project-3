@@ -3,8 +3,12 @@ import Book from "./Book";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as heart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { useNavigate } from "react-router-dom";
 
 export default function BookList({bookListArray, handleAddBook, changeView}) {
+    // routing
+  const navigate = useNavigate();
+
   return (
      <ul className='book-list'>              
                     {bookListArray.map((bookObj) => {
@@ -15,7 +19,7 @@ export default function BookList({bookListArray, handleAddBook, changeView}) {
                           
                           }</button>
 
-                            <button className='article-modal' onClick={() => {changeView(bookObj)}}>
+                            <button className='article-modal' onClick={() => {navigate(`/${bookObj.id}`)}}>
                               <Book
                               // error handling for if bookObj.volumeInfo.imageLinks is not valid
                               img={bookObj.volumeInfo.imageLinks ? bookObj.volumeInfo.imageLinks.thumbnail : null}
