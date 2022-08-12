@@ -9,7 +9,6 @@ import { faBookReader, faUser } from '@fortawesome/free-solid-svg-icons';
 
 // components
 import Form from './components/Form';
-import Modal from './components/Modal';
 import BookCart from './components/BookCart';
 import { firebaseProject } from './firebaseSetup';
 import { getDatabase, ref, onValue, push, set, child } from 'firebase/database';
@@ -59,6 +58,7 @@ function MainView() {
           printType: searchTerm[2],
           maxResults: 15,
           startIndex: searchTerm[1],
+          orderBy: 'newest',
           fields: "items(id, volumeInfo(authors, averageRating, title, subtitle, description, imageLinks, infoLink, printType ))"
         }
   
@@ -80,7 +80,7 @@ function MainView() {
   }
 
   // initializing random page to some data
-  useEffect(() => {
+useEffect(() => {
     setSearchTerm(["fiction", Math.floor(Math.random() * 200)]);
   }, [])
 
@@ -211,7 +211,7 @@ function MainView() {
   // closes modal/ reopens list of books
   const turnOffModal = () => {
     setView(false);
-  }
+  } 
 
   // toggles if side-menu is open or not
   const toggleCart = () => {
