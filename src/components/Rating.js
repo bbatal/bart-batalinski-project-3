@@ -47,15 +47,16 @@ export const StarRating = () => {
 
 const Ul = styled.ul`
   max-width: 500px;
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   list-style-type: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
 `
 
 const Li = styled.li`
-  padding: 0.5em 0.4em 0.5em 0.4em;
+  padding: 0.2em 0.5em 0.5em 0.5em;
   position: relative;
   display: flex;
   justify-content: center;
@@ -63,12 +64,13 @@ const Li = styled.li`
 `
 
 const Img = styled.img`
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   cursor: pointer;
   position: absolute;
 `
 
 const P = styled.p`
   font-size: 0.6rem;
+  text-align: center;
 `

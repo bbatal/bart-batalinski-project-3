@@ -4,3 +4,52 @@
     margin: 0 auto;
     align-items: flex-start;
 }
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    margin: 0 1.3em 0 0;
+}
+
+.left-side > * {
+    margin-bottom: 0.7em;
+}
+
+.fav-btn {
+    width: 90%;
+    margin: 0 auto 0.7em auto;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(58, 146, 97);
+    border: none;
+    border-radius: 5px;
+    min-height: 20px;
+    padding: 6px 20px;
+    cursor: pointer
+}
+
+.fav-btn:hover {
+    background-color: rgb(55, 136, 91);
+}
+
+.normal-btn {
+  padding: 0.6em 1em;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+  min-height: 20px;
+  cursor: pointer;
+}
+
+.normal-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.thumbnail {
+    max-width: 200px;
+    width: 165px;
+}

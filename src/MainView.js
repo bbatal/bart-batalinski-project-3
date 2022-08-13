@@ -106,6 +106,7 @@ useEffect(() => {
   //   setUserSubject(event.target.value);
   // }
 
+  // TODO: Refactor into many functions instead of just 1
   const handleAddBook = (e) => {
       // const copyArr = books.filter((singleBook) => {
       //   return singleBook.id !== e.target.value;

@@ -40,10 +40,10 @@ export default function BookView() {
     <main>
       {book?.id && <section className="book-info">
         <div className="left-side">
-          <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
-          <button>Add to Favs</button>
+          <img className="thumbnail" src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+          <button className="fav-btn">Add to Favs</button>
           <StarRating />
-          <button>Open Preview</button>
+          <button className="normal-btn">Open Preview</button>
         </div>
         <div className="right-side">
           <h1>{book.volumeInfo.title}</h1>
@@ -55,7 +55,7 @@ export default function BookView() {
           <div dangerouslySetInnerHTML={{ __html: `${book.volumeInfo.description}`}}></div>
           
           <h3>Get a Copy</h3>
-          <button>Google Store ${book.saleInfo?.retailPrice?.amount}{book.saleInfo?.retailPrice?.currencyCode}</button>
+          <button className="normal-btn">Google Store ${book.saleInfo?.retailPrice?.amount}{book.saleInfo?.retailPrice?.currencyCode}</button>
 
           <p>{book.volumeInfo.pageCount} pages</p>
           <p>Published {book.volumeInfo.publishedDate} by {book.volumeInfo.publisher}</p>
@@ -64,7 +64,7 @@ export default function BookView() {
     </main>
 
     <div>BookView {id}
-        <button onClick={() => {navigate('/profile')}}>go back</button>
+        <button className="normal-btn" onClick={() => {navigate('/profile')}}>go back</button>
     </div>
       
     </>
