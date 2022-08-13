@@ -4,6 +4,9 @@ import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
+// Components
+import { StarRating } from "./Rating"
+
 
 
 export default function BookView() {
@@ -30,7 +33,7 @@ export default function BookView() {
       .catch((error) => {
         console.log(error)
       })
-    },[])
+    },[id])
     console.log(book.id)
   return (
     <>
@@ -39,7 +42,7 @@ export default function BookView() {
         <div className="left-side">
           <img src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
           <button>Add to Favs</button>
-          <div>Rating Component</div>
+          <StarRating />
           <button>Open Preview</button>
         </div>
         <div className="right-side">
@@ -52,17 +55,19 @@ export default function BookView() {
           <div dangerouslySetInnerHTML={{ __html: `${book.volumeInfo.description}`}}></div>
           
           <h3>Get a Copy</h3>
-          <button>Google Store ${book.saleInfo.retailPrice.amount}{book.saleInfo.retailPrice.currencyCode}</button>
+          <button>Google Store ${book.saleInfo?.retailPrice?.amount}{book.saleInfo?.retailPrice?.currencyCode}</button>
 
           <p>{book.volumeInfo.pageCount} pages</p>
           <p>Published {book.volumeInfo.publishedDate} by {book.volumeInfo.publisher}</p>
         </div>
       </section>}
     </main>
+
+    <div>BookView {id}
+        <button onClick={() => {navigate('/profile')}}>go back</button>
+    </div>
       
     </>
-    // <div>BookView {id}
-    //     <button onClick={() => {navigate('/profile')}}>go back</button>
-    // </div>
+    
   )
 }

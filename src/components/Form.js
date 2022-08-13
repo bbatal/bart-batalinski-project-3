@@ -33,7 +33,7 @@ const Form = ({handleSubmitFunction, handleCounter}) => {
                     <select className='header-select' id="subject" name="Subject" onChange={ (handleSubject) } value={userSubject}>
                     {formOptions.map((option) => {
                         return (
-                            <option value={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</option>
+                            <option value={option} key={option}>{option.charAt(0).toUpperCase() + option.slice(1)}</option>
                         )
                     })}
                     </select>
