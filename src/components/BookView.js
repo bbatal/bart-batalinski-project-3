@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom"
 import axios from 'axios'
 
 // Components
-import { StarRating } from "./Rating"
+import { StarRating } from "./Rating";
+import CustomRating from "./CustomRating";
 
 
 
@@ -65,6 +66,7 @@ export default function BookView() {
           <div className="rating-container">
             <span>{book.volumeInfo.averageRating}</span>
             <span># of ratings: {book.volumeInfo.ratingsCount}</span>
+            <CustomRating />
           </div>
           : <div><span>Unrated</span></div>
         }
