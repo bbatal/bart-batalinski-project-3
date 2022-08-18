@@ -35,6 +35,18 @@ export default function BookView() {
       })
     },[id])
     console.log(book.id)
+
+    // converts date from 'xxxx-xx-xx' format to 'weekday-month-day-year'
+    const makeDate = (date) => {
+      if (date.length === 10) {
+        const parts = date.split('-');
+        const myDate = new Date(parts[0], parts[1] - 1, parts[2]);
+        return myDate.toDateString();
+      } else {
+        return date;
+      } 
+    }
+
   return (
     <>
     <main>
@@ -47,18 +59,30 @@ export default function BookView() {
         </div>
         <div className="right-side">
           <h1>{book.volumeInfo.title}</h1>
-          <h2>{book.volumeInfo.authors.map((author) => {return (<span key={author}>{author}</span>)})}</h2>
+          <h2>by {book.volumeInfo.authors.map((author) => {return (<span key={author}>{author}</span>)})}</h2>
+
+          {book.volumeInfo.averageRating ?
           <div className="rating-container">
             <span>{book.volumeInfo.averageRating}</span>
             <span># of ratings: {book.volumeInfo.ratingsCount}</span>
           </div>
+          : <div><span>Unrated</span></div>
+        }
+          
+
+
           <div dangerouslySetInnerHTML={{ __html: `${book.volumeInfo.description}`}}></div>
           
-          <h3>Get a Copy</h3>
-          <button className="normal-btn">Google Store ${book.saleInfo?.retailPrice?.amount}{book.saleInfo?.retailPrice?.currencyCode}</button>
-
-          <p>{book.volumeInfo.pageCount} pages</p>
-          <p>Published {book.volumeInfo.publishedDate} by {book.volumeInfo.publisher}</p>
+          <div className="purchase-info">
+            <h3>Get a Copy</h3>
+            <a href={book.saleInfo?.buyLink} target="_blank" className="normal-btn">Google Store ${book.saleInfo?.retailPrice?.amount}{book.saleInfo?.retailPrice?.currencyCode}</a>
+          </div>
+          
+          <div className="meta-info">
+            <p>{book.volumeInfo.pageCount} pages</p>
+            <p>Published {makeDate(book.volumeInfo.publishedDate)} by {book.volumeInfo.publisher}</p>
+          </div>
+          
         </div>
       </section>}
     </main>
