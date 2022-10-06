@@ -5,20 +5,21 @@ import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookReader, faUser } from '@fortawesome/free-solid-svg-icons';
 
-
+// firebase
+import { firebaseProject } from './firebaseSetup';
+import { getDatabase, ref, onValue, push, set, child } from 'firebase/database';
 
 // components
 import Form from './components/Form';
 import BookCart from './components/BookCart';
-import { firebaseProject } from './firebaseSetup';
-import { getDatabase, ref, onValue, push, set, child } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
 import Footer from './components/Footer';
+import BookList from './components/BookList';
 
 // Auth Components
 import Profile from './authComponents/Profile';
 import { useAuthValue } from './AuthContext';
-import BookList from './components/BookList';
+
 
 function MainView() {
   const [books, setBooks] = useState([]);
@@ -66,6 +67,7 @@ function MainView() {
       .then((response) => {
         setIsHidden(true)
         setBooks(response.data.items)
+        // console.log(response);
       })
       .catch((error) => {
         setIsHidden(true);
@@ -232,7 +234,7 @@ useEffect(() => {
   return (
     <div>
       <header className="header">
-        <div className="account">
+        <div className="account" role="button">
           <button className='account-btn' onClick={toggleAccount}>
               <FontAwesomeIcon className='icon' icon={ faUser } />
           </button>

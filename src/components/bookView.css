@@ -3,6 +3,15 @@
     max-width: 900px;
     margin: 0 auto;
     align-items: flex-start;
+    padding: 0 1.5em 0 1.5em;
+}
+
+.book-info h2 {
+    margin: 0 0 0.3em 0;
+}
+
+.book-info h1 {
+    margin-bottom: 0 !important;
 }
 
 .left-side {
@@ -86,4 +95,74 @@
 /* Meta info section */
 .meta-info > :nth-child(1) {
     margin-bottom: 0.4em;
+}
+
+/* Rating Container */
+.rating-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* Navigation back */
+.back-btn-container {
+    position: absolute;
+    min-width: 150px;
+    top: 10px;
+    left: 20px;
+}
+
+.back-btn-container .normal-btn {
+    display: flex;
+    gap: 0.5em;
+}
+
+
+/* mobile settings */
+.mobile-title {
+    display: none;
+}
+
+.mobile-rating {
+    display: none;
+}
+
+/* Media Queries */
+@media (max-width: 770px) {
+    .book-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-title,
+    .mobile-rating {
+        display: block;
+        text-align: center;
+    }
+    .desktop-title,
+    .desktop-rating {
+        display: none;
+    }
+
+    .rating-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .right-side {
+        align-items: center;
+        text-align: center;
+    }
+
+    .purchase-info {
+        align-items: center;
+    }
 }

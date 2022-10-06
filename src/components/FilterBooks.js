@@ -27,8 +27,10 @@ export default function FilterBooks({ bookArr, filteredBooks, term, getMoreBooks
     }
 
     const goNextPage = (term) => {
-        // term has [0] = 'fiction, [1] = 'mediumType' [2] = 'page'
-        getMoreBooks('click', term[0], term[2]);
+        // term has [0] = 'fiction, [1] = 'page' [2] = 'mediumType'
+        const subject = term[0];
+        // const currentPage = term[2];
+        getMoreBooks('click', subject);
     }
 
     return (

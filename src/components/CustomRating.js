@@ -1,10 +1,28 @@
+import React from 'react';
+import styled from 'styled-components';
+
 export default function CustomRating() {
   return (
-    <p aria-label="Rating is 4.5 out of 5">
-    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <path d="..."/>
-    </svg>
-    </p>
+    // TODO create react star component
+    // Get another svg to work with
+    // create custom component
+    <>
 
+     <svg height="210" width="500">
+  <Polygon points="100,10 40,198 190,78 10,78 160,198" />
+</svg> 
+
+
+    <div>CustomRating</div>
+    
+    </>
+    
   )
 }
+
+const Polygon = styled.polygon`
+  fill: white;
+  stroke: purple;
+  stroke-width: 0;
+  fill-rule: nonzero;
+`

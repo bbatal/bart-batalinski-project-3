@@ -1,6 +1,5 @@
 import {useState} from 'react'
 import './forms.css';
-
 import { signInWithEmailAndPassword, sendEmailVerification} from 'firebase/auth';
 import { auth } from '../firebaseSetup';
 import { useNavigate, Link } from 'react-router-dom';
@@ -8,11 +7,11 @@ import { useAuthValue } from '../AuthContext';
 
 function Login(){
 
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('') 
-  const [error, setError] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const { setTimeActive } = useAuthValue();;
+  const { setTimeActive } = useAuthValue();
   const navigate = useNavigate();
 
   const login = e => {

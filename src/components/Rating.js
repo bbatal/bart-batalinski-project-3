@@ -6,7 +6,7 @@ const EMPTY_STAR = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Fi
 const FULL_STAR =  "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Gold_Star.svg/1200px-Gold_Star.svg.png";
 
 
-export const StarRating = () => {
+export const CustomStarRating = () => {
   const starIds = [1, 2, 3, 4, 5];
   const [hovered, setHovered] = useState(0);
   const [clicked, setClicked] = useState(0);
