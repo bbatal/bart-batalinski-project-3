@@ -34,7 +34,7 @@ function MainView() {
   const [accountView, setAccountView] = useState(false);
 
   // information sharing between components
-  const [sharedState, setSharedState] = useState({});
+  // const [sharedState, setSharedState] = useState({});
 
   // firebase favourites array/state
   const [fireStorage, setFireStorage] = useState([]);
@@ -204,7 +204,7 @@ useEffect(() => {
   }, [currentUser.uid]);
 
   const changeView = (bookObject) => {
-    setSharedState(bookObject);
+    // setSharedState(bookObject);
 
     // closes cart component if it is open
     setCartView(false);
@@ -212,9 +212,9 @@ useEffect(() => {
   }
 
   // closes modal/ reopens list of books
-  const turnOffModal = () => {
-    setView(false);
-  } 
+  // const turnOffModal = () => {
+  //   setView(false);
+  // } 
 
   // toggles if side-menu is open or not
   const toggleCart = () => {
