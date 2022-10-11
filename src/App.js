@@ -22,7 +22,7 @@ function App() {
       setCurrentUser(user);
     })
 
-    console.log(new Date())
+    // console.log(new Date())
   }, [])
 
   return (

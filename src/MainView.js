@@ -5,20 +5,21 @@ import { TailSpin } from 'react-loader-spinner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookReader, faUser } from '@fortawesome/free-solid-svg-icons';
 
-
+// firebase
+import { firebaseProject } from './firebaseSetup';
+import { getDatabase, ref, onValue, push, set, child } from 'firebase/database';
 
 // components
 import Form from './components/Form';
 import BookCart from './components/BookCart';
-import { firebaseProject } from './firebaseSetup';
-import { getDatabase, ref, onValue, push, set, child } from 'firebase/database';
 import FilterBooks from './components/FilterBooks';
 import Footer from './components/Footer';
+import BookList from './components/BookList';
 
 // Auth Components
 import Profile from './authComponents/Profile';
 import { useAuthValue } from './AuthContext';
-import BookList from './components/BookList';
+
 
 function MainView() {
   const [books, setBooks] = useState([]);
@@ -33,7 +34,7 @@ function MainView() {
   const [accountView, setAccountView] = useState(false);
 
   // information sharing between components
-  const [sharedState, setSharedState] = useState({});
+  // const [sharedState, setSharedState] = useState({});
 
   // firebase favourites array/state
   const [fireStorage, setFireStorage] = useState([]);
@@ -66,6 +67,7 @@ function MainView() {
       .then((response) => {
         setIsHidden(true)
         setBooks(response.data.items)
+        // console.log(response);
       })
       .catch((error) => {
         setIsHidden(true);
@@ -202,7 +204,7 @@ useEffect(() => {
   }, [currentUser.uid]);
 
   const changeView = (bookObject) => {
-    setSharedState(bookObject);
+    // setSharedState(bookObject);
 
     // closes cart component if it is open
     setCartView(false);
@@ -210,9 +212,9 @@ useEffect(() => {
   }
 
   // closes modal/ reopens list of books
-  const turnOffModal = () => {
-    setView(false);
-  } 
+  // const turnOffModal = () => {
+  //   setView(false);
+  // } 
 
   // toggles if side-menu is open or not
   const toggleCart = () => {
@@ -232,7 +234,7 @@ useEffect(() => {
   return (
     <div>
       <header className="header">
-        <div className="account">
+        <div className="account" role="button">
           <button className='account-btn' onClick={toggleAccount}>
               <FontAwesomeIcon className='icon' icon={ faUser } />
           </button>
