@@ -10,6 +10,7 @@ import { AuthProvider } from './AuthContext';
 import { auth } from './firebaseSetup'
 import { onAuthStateChanged } from 'firebase/auth'
 import PrivateRoute from './PrivateRoute';
+import BookView from './components/BookView';
 
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
     onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
     })
+
+    console.log(new Date())
   }, [])
 
   return (
@@ -28,6 +31,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route exact path='/profile' element={<PrivateRoute> <MainView /> </PrivateRoute>} />
+          <Route exact path='/:id' element={<PrivateRoute>
+            <BookView />
+          </PrivateRoute>} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path='/verify-email' element={<VerifyEmail />} />
