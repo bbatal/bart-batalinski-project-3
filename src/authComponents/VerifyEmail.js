@@ -1,4 +1,3 @@
-import React from 'react';
 import './verifyEmail.css';
 import { useAuthValue } from '../AuthContext';
 
