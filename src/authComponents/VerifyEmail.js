@@ -1,3 +1,4 @@
+import React from 'react';
 import './verifyEmail.css';
 import { useAuthValue } from '../AuthContext';
 
@@ -16,8 +17,8 @@ function VerifyEmail() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            currentUser?.reload()
-            .then(() => {
+            (currentUser?.reload())
+        .then(() => {
                 if(currentUser?.emailVerified) {
                     clearInterval(interval)
                     navigate('/profile')
