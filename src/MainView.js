@@ -165,7 +165,7 @@ useEffect(() => {
 
 
         set(ref(database, `users/${currentUser?.uid}/${newPostKey}`), bookObj);
-      }
+    }
       
   }
 

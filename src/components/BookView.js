@@ -1,4 +1,3 @@
-import React from "react";
 import "./bookView.css";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
@@ -10,7 +9,7 @@ import axios from 'axios'
 // Components
 import { CustomStarRating } from "./Rating";
 // import CustomRating from "./CustomRating";
-import StarRating from "react-svg-star-rating";
+// import StarRating from "react-svg-star-rating";
 
 
 
@@ -76,7 +75,7 @@ export default function BookView() {
               <div className="rating-container">
                 <div className="rating">
 
-                  <StarRating
+                  {/* <StarRating
                     count={5}
                     size={30}
                     isReadOnly={true}
@@ -84,7 +83,7 @@ export default function BookView() {
                     initialRating={book.volumeInfo.averageRating}
                     emptyColor={''}
                     activeColor={'#ffd055'}
-                />
+                /> */}
 
                 <span>{book.volumeInfo.averageRating}</span>
 
@@ -114,7 +113,7 @@ export default function BookView() {
               <div className="rating-container">
                 <div className="rating">
 
-                  <StarRating
+                  {/* <StarRating
                     count={5}
                     size={30}
                     isReadOnly={true}
@@ -122,7 +121,7 @@ export default function BookView() {
                     initialRating={book.volumeInfo.averageRating}
                     emptyColor={''}
                     activeColor={'#ffd055'}
-                />
+                /> */}
 
                 <span>{book.volumeInfo.averageRating}</span>
 
