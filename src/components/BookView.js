@@ -64,7 +64,9 @@ export default function BookView() {
 
       {book?.id && <section className="book-info">
         <div className="left-side">
-          <img className="thumbnail" src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} />
+          {book.volumeInfo.imageLinks ? 
+          <img className="thumbnail" src={book.volumeInfo.imageLinks.thumbnail} alt={book.volumeInfo.title} /> : 
+          <h2>No image available</h2>}
           <h1 className="mobile-title">{book.volumeInfo.title}</h1>
 
           <div className="mobile-rating">
