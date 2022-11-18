@@ -1,0 +1,168 @@
+.book-info {
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: flex-start;
+    padding: 0 1.5em 0 1.5em;
+}
+
+.book-info h2 {
+    margin: 0 0 0.3em 0;
+}
+
+.book-info h1 {
+    margin-bottom: 0 !important;
+}
+
+.left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1.3em 0 0;
+}
+
+.left-side > * {
+    margin-bottom: 0.7em;
+    margin-top: 0.2em;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.right-side > * {
+    margin-bottom: 0.7em;
+}
+
+.fav-btn {
+    width: 90%;
+    margin: 0 auto 0.7em auto;
+    font-weight: 700;
+    color: white;
+    background-color: rgb(58, 146, 97);
+    border: none;
+    border-radius: 5px;
+    min-height: 20px;
+    padding: 6px 20px;
+    cursor: pointer
+}
+
+.fav-btn:hover {
+    background-color: rgb(55, 136, 91);
+}
+
+.normal-btn {
+  padding: 0.6em 1em;
+  font-size: 0.75rem;
+  font-family: sans-serif;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+  min-height: 20px;
+  cursor: pointer;
+  max-width: fit-content;
+}
+
+.normal-btn:hover {
+  background-color: black;
+  color: white;
+}
+
+.thumbnail {
+    max-width: 200px;
+    width: 165px;
+}
+
+/* Purchasing section */
+.purchase-info {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    width: 100%;
+    padding: 0.8em 0;
+}
+
+.purchase-info > :nth-child(1) {
+    margin-bottom: 0.6em;
+}
+
+/* Meta info section */
+.meta-info > :nth-child(1) {
+    margin-bottom: 0.4em;
+}
+
+/* Rating Container */
+.rating-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+}
+
+/* Navigation back */
+.back-btn-container {
+    position: absolute;
+    min-width: 150px;
+    top: 10px;
+    left: 20px;
+}
+
+.back-btn-container .normal-btn {
+    display: flex;
+    gap: 0.5em;
+}
+
+
+/* mobile settings */
+.mobile-title {
+    display: none;
+}
+
+.mobile-rating {
+    display: none;
+}
+
+/* Media Queries */
+@media (max-width: 770px) {
+    .book-info {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mobile-title,
+    .mobile-rating {
+        display: block;
+        text-align: center;
+    }
+    .desktop-title,
+    .desktop-rating {
+        display: none;
+    }
+
+    .rating-container {
+        align-items: center;
+        text-align: center;
+    }
+
+    .right-side {
+        align-items: center;
+        text-align: center;
+    }
+
+    .purchase-info {
+        align-items: center;
+    }
+}
